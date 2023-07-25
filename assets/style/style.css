@@ -1,0 +1,41 @@
+.img-logo {
+  width: 5rem;
+  background-color: antiquewhite;
+}
+
+.nav-estilo {
+  background-color: #333d29;
+}
+
+.c-item {
+  height: 20rem;
+}
+
+.c-img {
+  height: 100%;
+  object-fit: cover;
+  filter: brightness(0.6);
+}
+
+body {
+  background-color: #c2c5aa;
+}
+
+.card-style {
+  background-color: #656d4a;
+  color: white;
+}
+
+.button-a {
+  text-decoration: none;
+  color: white;
+}
+
+.img-redes{
+    width: 2rem;
+}
+
+.card-style-one{
+  background-color: #7f4f24;
+  color: white;
+}
