@@ -16,7 +16,7 @@ let farmacia = createApp({
             search: "",
             mayorMenor: [],
             menorMayor: [],
-            itemsFiltrados: []
+            itemsFiltrados: [],
             products: [],
             pharmacyItems: [],
             cartItems: [],
@@ -40,7 +40,7 @@ let farmacia = createApp({
                 console.log(pharmacy)
                 this.products = datos
                 this.cartItems = "",
-                console.log(this.products)
+                    console.log(this.products)
             })
             .catch(error => console.error("F"))
     },
@@ -60,16 +60,17 @@ let farmacia = createApp({
 
             console.log(this.itemsFiltrados);
         },
-    methods: {
-        addToCart(product) {
-            this.cartItems = [...this.cartItems, product];
-            console.log('Cart Items:', this.cartItems);
+        methods: {
+            addToCart(product) {
+                this.cartItems = [...this.cartItems, product];
+                console.log('Cart Items:', this.cartItems);
+            },
+            toggleCart() {
+                this.isCartOpen = !this.isCartOpen;
+                console.log('isCartOpen:', this.isCartOpen);
+            }
         },
-        toggleCart() {
-            this.isCartOpen = !this.isCartOpen;
-            console.log('isCartOpen:', this.isCartOpen);
-        }
-    },
+    }
 })
 
 farmacia.mount("#main")
