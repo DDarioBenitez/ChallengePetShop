@@ -1,4 +1,4 @@
-.img-logo{
+.img-logo {
   width: 12rem;
 }
 
@@ -17,7 +17,9 @@
 }
 
 body {
-  background-color: #c2c5aa;
+  background-color: #dbe58b;
+  transition: all 1.5s ease;
+  min-height: 100vh;
 }
 
 /* #c2c5aa;*/
@@ -32,18 +34,98 @@ body {
   color: white;
 }
 
-.img-redes{
-    width: 2rem;
+.img-redes {
+  width: 2rem;
 }
-footer{
-
+footer {
   background-color: #333d29;
+  color: white;
 }
 
-.card-style-one{
+.card-style-one {
   background-color: #7f4f24;
   color: white;
 }
+
+body.darkmode{
+  background-color: #181212;
+  color: white;
+  transition: all 1.5s ease;
+}
+
+
+/* The switch - the box around the slider */
+.switch {
+  margin-top: 0.5rem;
+  font-size: 17px;
+  position: relative;
+  display: inline-block;
+  width: 3rem;
+  height: 1.5rem;
+ }
+ 
+ /* Hide default HTML checkbox */
+ .switch input {
+  opacity: 1;
+  width: 0;
+  height: 0;
+ }
+ 
+ /* The slider */
+ .slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0px;
+  background: #100344;
+  transition: .4s;
+  border-radius: 30px;
+  border: 1px solid #ccc;
+ }
+ 
+ .slider:before {
+  position: absolute;
+  content: "";
+  height: 1.3em;
+  width: 1.3em;
+  border-radius: 10px;
+  left: 1.2px;
+  top: 0;
+  bottom: 0;
+  background-color: white;
+  box-shadow: 0 2px 5px #999999;
+  transition: .4s;
+ }
+ 
+ input:checked + .slider {
+  background-color: #cdb938;
+  border: 1px solid transparent;
+ }
+ 
+ input:checked + .slider:before {
+  transform: translateX(1.5em);
+ }
+.shoppingCart {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  z-index: 9999;
+}
+
+.boxShadow {
+  box-shadow: 10px 10px 38px 0px rgba(24, 38, 11, 0.75);
+  -webkit-box-shadow: 10px 10px 38px 0px rgba(24, 38, 11, 0.75);
+  -moz-box-shadow: 10px 10px 38px 0px rgba(24, 38, 11, 0.75);
+}
+/* .card {
+  transition: all 0.2s;
+}
+.card:hover {
+  transform: scale(1.15);
+  translate: 0px 0px 2rem;
+} */
 
 .shoppingCart {
   position: fixed;
@@ -53,4 +135,34 @@ footer{
 }
 
 
+.shoppingCartButton {
+  padding: 10px 15px;
+  border-radius: 50%;
+  background-color: #333d29; 
+  color: #fff;
+  border: none;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  font-size: 20px;
+}
+
+
+.offcanvas-body {
+  padding: 15px;
+}
+
+.offcanvas {
+  position: fixed;
+  bottom: 0;
+  right: 0;
+  top: 0;
+  z-index: 9998; 
+  width: 300px; 
+  background-color: #fff;
+  transform: translateX(100%); 
+  transition: transform 0.3s ease-in-out; 
+}
+
+.offcanvas.show {
+  transform: translateX(0); 
+}
 
