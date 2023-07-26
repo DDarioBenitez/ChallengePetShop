@@ -45,7 +45,7 @@ footer {
   background-color: #7f4f24;
   color: white;
 }
-
+Karen
 body.darkmode{
   background-color: #181212;
   color: white;
@@ -105,3 +105,23 @@ body.darkmode{
  input:checked + .slider:before {
   transform: translateX(1.5em);
  }
+.shoppingCart {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  z-index: 9999;
+}
+
+.boxShadow {
+  box-shadow: 10px 10px 38px 0px rgba(24, 38, 11, 0.75);
+  -webkit-box-shadow: 10px 10px 38px 0px rgba(24, 38, 11, 0.75);
+  -moz-box-shadow: 10px 10px 38px 0px rgba(24, 38, 11, 0.75);
+}
+/* .card {
+  transition: all 0.2s;
+}
+.card:hover {
+  transform: scale(1.15);
+  translate: 0px 0px 2rem;
+} */
+
