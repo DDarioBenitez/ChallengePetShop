@@ -54,6 +54,7 @@ body.darkmode{
 }
 
 
+
 /* The switch - the box around the slider */
 .switch {
   margin-top: 0.5rem;
@@ -119,6 +120,7 @@ body.darkmode{
   -webkit-box-shadow: 10px 10px 38px 0px rgba(24, 38, 11, 0.75);
   -moz-box-shadow: 10px 10px 38px 0px rgba(24, 38, 11, 0.75);
 }
+
 /* .card {
   transition: all 0.2s;
 }
