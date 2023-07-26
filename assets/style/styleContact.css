@@ -43,12 +43,12 @@ background-color: #f5f7fa;
     bottom: 20px;
     right: 20px;
     z-index: 9999;
-  }
+}
   
  
-#shoppingCartButton {
+#buttonCart{
     padding: 10px 15px;
-    border-radius: 10%;
+    border-radius: 20%;
     background-color: #333d29; 
     color: #fff;
     border: none;
@@ -56,14 +56,24 @@ background-color: #f5f7fa;
     font-size: 20px;
 }
 
-#buttonCart{
-    padding: 10px 15px;
-    border-radius: 50%;
+#btnVaciar{
     background-color: #333d29; 
     color: #fff;
-    border: none;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
-    font-size: 20px;
+}
+
+#btnRemover{
+    background-color: #d3e68f; 
+    color: #333d29;
+}
+
+#btnMas{
+    background-color: #d3e68f; 
+    color: #333d29; 
+}
+
+#btnMenos{
+    background-color: #333d29; 
+    color: #fff;
 }
 
 .card.map-card .card-body {
