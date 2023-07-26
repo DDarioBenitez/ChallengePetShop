@@ -5,12 +5,12 @@
 }
 
 /* main style */
-.img-logo {
-    width: 5rem;
-    background-color: antiquewhite;
-}
+
+.img-logo{
+    width: 12rem;
+  }
   
-  .nav-estilo {
+.nav-estilo {
     background-color: #333d29;
 }
 
@@ -36,7 +36,35 @@ body {
 background-color: #f5f7fa;
 }
 
+/* shopping catr button */
 
+.shoppingCart {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 9999;
+  }
+  
+ 
+#shoppingCartButton {
+    padding: 10px 15px;
+    border-radius: 10%;
+    background-color: #333d29; 
+    color: #fff;
+    border: none;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    font-size: 20px;
+}
+
+#buttonCart{
+    padding: 10px 15px;
+    border-radius: 50%;
+    background-color: #333d29; 
+    color: #fff;
+    border: none;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    font-size: 20px;
+}
 
 .card.map-card .card-body {
 position: absolute;
@@ -77,16 +105,6 @@ position: absolute;
 margin-top: -1.5rem;
 }
 
-#googleMap{
-    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
-}
-
-#paymentsMethods{
-    display: flex;
-    height: 1.5rem;
-    justify-content: center;
-    gap: 1rem;
-}
 .rrss{
     height: 1.5rem !important;
 }
@@ -108,3 +126,12 @@ margin-top: -1.5rem;
     display: flex;
     justify-content: space-evenly;
 }
+
+.img-redes{
+    width: 2rem;
+}
+
+footer{
+
+    background-color: #333d29;
+  }
