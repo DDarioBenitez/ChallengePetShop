@@ -44,27 +44,7 @@ const options = {
             }                     
             
             this.showModal = true;
-        },
-
-        addToCart(product) {
-            const productIndex = this.products.findIndex(item => item._id === product._id);
-            if (productIndex !== -1) {
-                const selectedProduct = this.products[productIndex];
-                if (selectedProduct.disponibles >= 1) {
-                    const cartItemIndex = this.cartItems.findIndex(item => item._id === product._id);
-                    if (cartItemIndex !== -1) {
-                        this.cartItems[cartItemIndex].quantity++;
-                    } else {
-                        this.cartItems.push({ ...selectedProduct, quantity: 1 });
-                    }
-                    selectedProduct.disponibles--;
-                } else {
-                    alert("This product is not available.");
-                }
-            }
-            this.storeCartItems();
-        },
-
+        },        
 
         removeFromCart(product) {
             const productIndex = this.products.findIndex(item => item._id === product._id);
