@@ -1,3 +1,4 @@
+Karen
 .img-logo {
   width: 12rem;
 
@@ -42,4 +43,8 @@ footer{
 .card-style-one{
   background-color: #7f4f24;
   color: white;
+}
+=======
+body {
+  min-height: 100vh;
 }
