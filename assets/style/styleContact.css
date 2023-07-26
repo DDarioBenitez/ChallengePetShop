@@ -49,8 +49,8 @@ background-color: #f5f7fa;
 #buttonCart{
     padding: 10px 15px;
     border-radius: 20%;
-    background-color: #333d29; 
-    color: #fff;
+    background-color: #ffffff; 
+    color: #333d29;
     border: none;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
     font-size: 20px;
@@ -72,6 +72,11 @@ background-color: #f5f7fa;
 }
 
 #btnMenos{
+    background-color: #333d29; 
+    color: #fff;
+}
+
+#btnContact{
     background-color: #333d29; 
     color: #fff;
 }
