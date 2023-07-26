@@ -17,7 +17,6 @@ let farmacia = createApp({
             mayorMenor: [],
             menorMayor: [],
             itemsFiltrados: [],
-
             products: [],
             cartItems: [],
             isCartOpen: false,
@@ -40,6 +39,7 @@ let farmacia = createApp({
                 this.products = datos
                 this.cartItems = [],
                 console.log(this.products)
+                console.log(this.isCartOpen);
             })
             .catch(error => console.error("F"))
 
@@ -64,7 +64,6 @@ let farmacia = createApp({
 
             console.log(this.itemsFiltrados);
         },
-    },
     methods: {
         addToCart(product) {
             const productIndex = this.products.findIndex(item => item._id === product._id);
@@ -84,8 +83,6 @@ let farmacia = createApp({
             }
             this.storeCartItems();
         },
-
-
         removeFromCart(product) {
             const productIndex = this.products.findIndex(item => item._id === product._id);
             if (productIndex !== -1) {
@@ -102,7 +99,6 @@ let farmacia = createApp({
             }
             this.storeCartItems();
         },
-
         clearCart() {
 
             this.cartItems.forEach(item => {
@@ -111,21 +107,18 @@ let farmacia = createApp({
                     this.products[productIndex].disponibles += item.quantity;
                 }
             });
-
             this.cartItems = [];
             this.storeCartItems();
         },
-
         storeCartItems() {
             localStorage.setItem('cartItems', JSON.stringify(this.cartItems));
         },
-
         toggleCart() {
             this.isCartOpen = !this.isCartOpen;
             console.log('isCartOpen:', this.isCartOpen);
         },
-
     },
 })
+
 
 farmacia.mount("#main")
