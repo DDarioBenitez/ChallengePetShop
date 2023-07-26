@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="../images/favicon.png" type="image/x-icon">
+    <link rel="stylesheet" href="../style/styleContact.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+</head>
+<title>Contacto</title>
+</head>
+
+<body>
+    <div id="app">
+        <header>
+            <nav class="navbar navbar-expand-lg bg-dark border-bottom border-bottom-dark p-0" data-bs-theme="dark"
+                id="nav-main">
+                <div class="container-fluid nav-estilo d-flex justify-content-between">
+                    <a class="navbar-brand" href="../../index.html"><img src="../images/logo_animalaria.png" alt="logo"
+                            class="img-logo rounded-4"></a>
+                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                        data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false"
+                        aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+                        <div class="navbar-nav d-flex justify-content-end w-100">
+                            <a class="nav-link" aria-current="page" href="../../index.html">HOME</a>
+                            <a class="nav-link" href="./farmacia.html">FARMACIA</a>
+                            <a class="nav-link" href="./juguetes.html">JUGUETES</a>
+                            <a class="nav-link active fw-bolder" href="#">CONTACTO</a>
+                        </div>
+                    </div>
+                </div>
+            </nav>
+        </header>
+        <main class="flex-grow-1">
+
+            <section>
+                <h1 style="text-align: center; color: #333d29;">Contáctanos</h1>
+            </section>
+
+            <form @submit.prevent="validateForm">
+                <div class="contactForm">
+                    <div class="mb-3">
+                        <label for="nombreCliente" class="form-label">Nombre</label>
+                        <input type="text" class="form-control" id="nombreCliente" placeholder="Nombre"
+                            v-model="formData.name">
+                    </div>
+                    <div class="mb-3">
+                        <label for="apellidosCliente" class="form-label">Apellidos</label>
+                        <input type="text" class="form-control" id="apellidosCliente" placeholder="Apellidos">
+                    </div>
+                    <div class="mb-3">
+                        <label for="exampleInputEmail1" class="form-label">Email address</label>
+                        <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+                    </div>
+                    <div class="mb-3">
+                        <label for="telefono" class="form-label">Telefono</label>
+                        <input type="tel" class="form-control" id="telefono" placeholder="Teléfono">
+                    </div>
+
+                    <p>Selecciona tu tipo de Mascota</p>
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="flexRadioDefault" id="perro">
+                        <label class="form-check-label" for="perro">
+                            Perro
+                        </label>
+                    </div>
+
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="flexRadioDefault" id="gato">
+                        <label class="form-check-label" for="gato">
+                            Gato
+                        </label>
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="exampleFormControlTextarea1" class="form-label">Déjanos un Comentario</label>
+                        <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+                    </div>
+
+                    <button type="submit" class="btn btn-primary" data-bs-toggle="modal"
+                        data-bs-target="#exampleModalCenter"> Enviar </button>
+                </div>
+
+            </form>
+
+            <div class="modal fade" id="exampleModalCenter" v-if="showModal" tabindex="-1" role="dialog"
+                aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLongTitle">¡Gracias por Ponerte en Contacto, {{
+                                formData.name }}!
+                            </h5>
+                            <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body" id="modalBody">
+                            <img src="../images/check-mark.png" alt="Checked" style="height: 3rem;">
+                            <p>Tu Información ha sido Enviada</p>
+                            <p>Pronto nos comunicaremos contigo.</p>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+    </div>
+
+    <div class="map">
+
+        <div class="container">
+            <section class="mx-auto my-5" style="max-width: 25rem;">
+
+                <div class="card map-card">
+                    <div id="map-container-google-1" class="z-depth-1-half map-container" style="height: 500px">
+                        <iframe
+                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3284.243216152202!2d-58.403770324512834!3d-34.59801085719627!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x95bcca9158e82c41%3A0x6a1cd58fa7e6383d!2sParaguay%202334%205%20f%2C%20C1121ABL%20CABA%2C%20Argentina!5e0!3m2!1ses-419!2sco!4v1690315372983!5m2!1ses-419!2sco"
+                            frameborder="0" style="border:0" allowfullscreen></iframe>
+                    </div>
+                    <div class="card-body closed px-0">
+                        <div class="button px-2 mt-3">
+                            <a class="btn btn-floating btn-lg text-white float-end"
+                                style="margin-right: .75rem; background-color: #333d29;"><svg
+                                    xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor"
+                                    class="bi bi-car-front-fill" viewBox="0 0 16 16">
+                                    <path
+                                        d="M2.52 3.515A2.5 2.5 0 0 1 4.82 2h6.362c1 0 1.904.596 2.298 1.515l.792 1.848c.075.175.21.319.38.404.5.25.855.715.965 1.262l.335 1.679c.033.161.049.325.049.49v.413c0 .814-.39 1.543-1 1.997V13.5a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1-.5-.5v-1.338c-1.292.048-2.745.088-4 .088s-2.708-.04-4-.088V13.5a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1-.5-.5v-1.892c-.61-.454-1-1.183-1-1.997v-.413a2.5 2.5 0 0 1 .049-.49l.335-1.68c.11-.546.465-1.012.964-1.261a.807.807 0 0 0 .381-.404l.792-1.848ZM3 10a1 1 0 1 0 0-2 1 1 0 0 0 0 2Zm10 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2ZM6 8a1 1 0 0 0 0 2h4a1 1 0 1 0 0-2H6ZM2.906 5.189a.51.51 0 0 0 .497.731c.91-.073 3.35-.17 4.597-.17 1.247 0 3.688.097 4.597.17a.51.51 0 0 0 .497-.731l-.956-1.913A.5.5 0 0 0 11.691 3H4.309a.5.5 0 0 0-.447.276L2.906 5.19Z" />
+                                </svg></a>
+                        </div>
+                        <div class="bg-white px-4 pb-4 pt-3-5">
+                            <h5 class="card-title h5">Animalaria PetShop</h5>
+                            <div class="d-flex justify-content-between">
+                                <h6 class="card-subtitle font-weight-light">El lugar ideal para tus peludos</h6>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+
+            </section>
+        </div>
+
+    </div>
+
+    </main>
+    </div>
+
+    <footer>
+        <hr>
+        <section class="container align-items-center d-flex justify-content-around flex-wrap gap-2 align-items-center p-2"> 
+            <nav class="gap-5">
+              <a href="https://web.whatsapp.com/"><img class="img-redes" src="../images/wpp.png" alt="whatsapp"
+                  title="Whatsapp"></a>
+              <a href="https://es-la.facebook.com/"><img class="img-redes" src="../images/facebook.png"
+                  alt="facebook" title="Facebook"></a>
+              <a href="https://www.instagram.com/"><img class="img-redes" src="../images/instagram.png"
+                  alt="instagram" title="Instagramp"></a>
+            </nav>
+            <small class="text-light">Derechos de página reservados - Animalaria</small>
+            <h5 class="text-light">Cohort - 49</h5>
+        </section>
+      </footer>
+
+
+
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz"
+        crossorigin="anonymous"></script>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <script src="../scripts/contacto.js"></script>
+
+</body>
+
+</html>
