@@ -39,8 +39,9 @@ let farmacia = createApp({
                 let pharmacy = datos.map(product => product.categoria == "farmacia")
                 console.log(pharmacy)
                 this.products = datos
-                this.cartItems = "",
-                    console.log(this.products)
+                this.cartItems = [];
+                console.log(this.products)
+                console.log(this.isCartOpen);
             })
             .catch(error => console.error("F"))
     },
@@ -72,5 +73,6 @@ let farmacia = createApp({
         },
     }
 })
+
 
 farmacia.mount("#main")
