@@ -1,6 +1,6 @@
 .img-logo {
-  width: 5rem;
-  background-color: antiquewhite;
+  width: 12rem;
+
 }
 
 .nav-estilo {
@@ -33,6 +33,10 @@ body {
 
 .img-redes{
     width: 2rem;
+}
+footer{
+
+  background-color: #333d29;
 }
 
 .card-style-one{
