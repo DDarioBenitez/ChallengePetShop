@@ -19,6 +19,7 @@
 body {
   background-color: #dbe58b;
   transition: all 1.5s ease;
+  min-height: 100vh;
 }
 
 /* #c2c5aa;*/
