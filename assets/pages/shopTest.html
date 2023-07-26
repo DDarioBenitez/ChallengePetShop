@@ -25,10 +25,13 @@
                             <h5 class="card-title">{{ product.producto }}</h5>
                             <p class="card-text">${{ product.precio }}</p>
                             <div class="info">
-                                <p>{{ product.disponibles }}</p>
-                                <button class="btn btn-primary" type="button" @click="addToCart(product)">
-                                    <i class="fas fa-shopping-cart"></i> Comprar
-                                </button>
+                                <p>Disponibles:</p>
+                                <div class="quantity-control">
+                                    <button class="btn" id="btnMas" @click="addToCart(product)">+</button>
+                                    <span>{{ item.disponibles }}</span>
+                                    <button class="btn" id="btnMenos" @click="removeFromCart(product)">-</button>
+                                </div>
+                                
                             </div>
                         </div>
                     </div>
@@ -40,7 +43,7 @@
 
             <div class="shoppingCart" id="shoppingCartButton">
                 <button class="btn btn-primary" type="button" @click="toggleCart" data-bs-toggle="offcanvas"
-                    data-bs-target="#offcanvasRight" aria-controls="offcanvasRight" id="buttonCart" ><i
+                    data-bs-target="#offcanvasRight" aria-controls="offcanvasRight" id="buttonCart"><i
                         class="fas fa-shopping-cart"></i></button>
 
                 <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasRight"
@@ -50,16 +53,23 @@
                         <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
                     </div>
                     <div class="offcanvas-body">
+
                         <template v-if="cartItems.length > 0" v-for="item in cartItems" :key="item.id">
                             <ul>
-                                <li>{{ item.producto }} - ${{ item.precio }}</li>
+                              <li>
+                                {{ item.producto }} - ${{ item.precio }} (Quantity: {{ item.quantity }}) -
+                                <button class="btn btn-danger btn-sm" @click="removeItemFromCart(item)">Remove</button>
+                              </li>
                             </ul>
                         </template>
                         <template v-else>
                             <p>No items in the cart</p>
                         </template>
+                        <button class="btn btn-danger btn-sm" @click="clearCart">Clear Cart</button>
+                        
+                        
                     </div>
-                </div>                
+                </div>
             </div>
         </main>
     </div>
