@@ -39,12 +39,14 @@ body {
 }
 footer {
   background-color: #333d29;
+  color: white;
 }
 
 .card-style-one {
   background-color: #7f4f24;
   color: white;
 }
+
 body.darkmode {
   background-color: #181212;
   color: white;
