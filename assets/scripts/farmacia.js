@@ -17,10 +17,11 @@ let farmacia = createApp({
       mayorMenor: [],
       menorMayor: [],
       itemsFiltrados: [],
+
       products: [],
       cartItems: [],
       isCartOpen: false,
-    };
+    }
   },
   created() {
     fetch("https://mindhub-xj03.onrender.com/api/petshop")
@@ -42,15 +43,15 @@ let farmacia = createApp({
         console.log(this.menorMayor);
 
         this.products = datos;
-        (this.cartItems = []), console.log(this.products);
-        console.log(this.isCartOpen);
+        this.cartItems = []; 
+        
       })
       .catch((error) => console.error("F"));
 
-    const cartItems = JSON.parse(localStorage.getItem("cartItems"));
-    if (cartItems) {
+      const cartItems = JSON.parse(localStorage.getItem("cartItems"));
+      if (cartItems) {
       this.cartItems = cartItems;
-    }
+      }
   },
   computed: {
     filtrarBusqueda() {
@@ -58,11 +59,11 @@ let farmacia = createApp({
         this.itemsFiltrados =
           this.search.length > 0
             ? this.itemsFarmacia.filter((item) =>
-                item.producto.toLowerCase().includes(this.search.toLowerCase())
-              )
+              item.producto.toLowerCase().includes(this.search.toLowerCase())
+            )
             : (this.itemsFarmacia = this.items.filter(
-                (item) => item.categoria == "farmacia"
-              ));
+              (item) => item.categoria == "farmacia"
+            ));
       }
       if (this.radios == "mayor") {
         this.itemsFiltrados = this.mayorMenor.filter((item) =>
@@ -77,17 +78,16 @@ let farmacia = createApp({
 
       console.log(this.itemsFiltrados);
     },
+  },
+
     methods: {
+
       addToCart(product) {
-        const productIndex = this.products.findIndex(
-          (item) => item._id === product._id
-        );
+        const productIndex = this.products.findIndex(item => item._id === product._id);
         if (productIndex !== -1) {
           const selectedProduct = this.products[productIndex];
           if (selectedProduct.disponibles >= 1) {
-            const cartItemIndex = this.cartItems.findIndex(
-              (item) => item._id === product._id
-            );
+            const cartItemIndex = this.cartItems.findIndex(item => item._id === product._id);
             if (cartItemIndex !== -1) {
               this.cartItems[cartItemIndex].quantity++;
             } else {
@@ -95,20 +95,17 @@ let farmacia = createApp({
             }
             selectedProduct.disponibles--;
           } else {
-            alert("This product is not available.");
+            alert("Lo sentimos, El Producto ya está agotado.");
           }
         }
         this.storeCartItems();
       },
+
       removeFromCart(product) {
-        const productIndex = this.products.findIndex(
-          (item) => item._id === product._id
-        );
+        const productIndex = this.products.findIndex(item => item._id === product._id);
         if (productIndex !== -1) {
           const selectedProduct = this.products[productIndex];
-          const cartItemIndex = this.cartItems.findIndex(
-            (item) => item._id === product._id
-          );
+          const cartItemIndex = this.cartItems.findIndex(item => item._id === product._id);
           if (cartItemIndex !== -1) {
             if (this.cartItems[cartItemIndex].quantity > 1) {
               this.cartItems[cartItemIndex].quantity--;
@@ -120,27 +117,33 @@ let farmacia = createApp({
         }
         this.storeCartItems();
       },
+
+
       clearCart() {
-        this.cartItems.forEach((item) => {
-          const productIndex = this.products.findIndex(
-            (p) => p._id === item._id
-          );
+
+        this.cartItems.forEach(item => {
+          const productIndex = this.products.findIndex(p => p._id === item._id);
           if (productIndex !== -1) {
             this.products[productIndex].disponibles += item.quantity;
           }
         });
+
         this.cartItems = [];
         this.storeCartItems();
       },
+
+
       storeCartItems() {
-        localStorage.setItem("cartItems", JSON.stringify(this.cartItems));
+        localStorage.setItem('cartItems', JSON.stringify(this.cartItems));
       },
+
       toggleCart() {
         this.isCartOpen = !this.isCartOpen;
-        console.log("isCartOpen:", this.isCartOpen);
+        console.log('isCartOpen:', this.isCartOpen);
       },
+
     },
-  },
-});
+  
+})
 
 farmacia.mount("#main");

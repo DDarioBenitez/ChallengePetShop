@@ -108,7 +108,7 @@
                             <div class="quantity-control">
                                 <button class="btn" @click="addToCart(item)">+</button>
                                 <span> {{ item.disponibles }} </span>
-                                <button class="btn" @click="removeFromCart(item)">-</button>
+                                <button class="btn" id="btnMenos" @click="removeFromCart(item)">-</button>
                             </div>
                         </div>
             </template>
@@ -174,31 +174,38 @@
                 data-bs-target="#offcanvasRight" aria-controls="offcanvasRight" id="buttonCart">
                 <i class="fas fa-shopping-cart"></i></button>
         
-            <!-- <template v-show="isCartOpen"> -->
-            <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasRight" aria-labelledby="offcanvasRightLabel">
-                <div class="offcanvas-header">
-                    <h5 class="offcanvas-title" id="offcanvasRightLabel">Tu Carrito de Compras</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
-                </div>
-                <div class="offcanvas-body">
-
-                    <template v-if="cartItems.length > 0" v-for="item in cartItems" :key="item.id">
-                        <ul>
-                            <li>
-                                {{ item.producto }} - ${{ item.precio }} (Cantidad: {{ item.quantity }}) -
-                                <button class="btn btn-sm" @click="removeFromCart(item)"
-                                    id="btnRemover">Remover</button>
-                            </li>
-                        </ul>
-                    </template>
-                    <template v-else>
-                        <p>No hay nada en el carrito</p>
-                    </template>
-                    <button class="btn btn-sm" @click="clearCart" id="btnVaciar">Vaciar Carrito</button>
-
-
-                </div>
-            </div>
+            <!-- <template v-show="isCartOpen">
+                <div class="shoppingCart">
+                    <button class="btn btn-primary" type="button" @click="toggleCart" data-bs-toggle="offcanvas"
+                        data-bs-target="#offcanvasRight" aria-controls="offcanvasRight" id="buttonCart">
+                        <i class="fas fa-shopping-cart"></i> Cart ({{ cartItems.length }})
+                    </button> -->
+                
+                    <!-- <template v-show="isCartOpen"> -->
+                        <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasRight" 
+                        aria-labelledby="offcanvasRightLabel"git>
+                            <div class="offcanvas-header">
+                                <h5 class="offcanvas-title" id="offcanvasRightLabel">Tu Carrito de Compras</h5>
+                                <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+                            </div>
+                            <div class="offcanvas-body">
+                
+                                <template v-if="cartItems.length > 0" v-for="item in cartItems" :key="item.id">
+                                    <ul>
+                                        <li>
+                                            {{ item.producto }} - ${{ item.precio }} (Cantidad: {{ item.quantity }}) -
+                                            <button class="btn btn-sm" @click="removeFromCart(item)" id="btnRemover">Remover</button>
+                                        </li>
+                                    </ul>
+                                </template>
+                                <template v-else>
+                                    <p>No hay nada en el carrito</p>
+                                </template>
+                                <button class="btn btn-sm" @click="clearCart" id="btnVaciar">Vaciar Carrito</button>
+                
+                
+                            </div>
+                        </div>
             <!-- </template> -->
         </div>
 
