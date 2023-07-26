@@ -5,12 +5,7 @@ let farmacia = createApp({
     data() {
         return {
             items: [],
-            nombre: undefined,
             categoria: ["Farmacia", "Jugueteria"],
-            id: undefined,
-            precio: undefined,
-            stock: undefined,
-            descripcion: undefined,
             itemsFarmacia: undefined,
             radios: "todo",
             search: "",
@@ -20,6 +15,7 @@ let farmacia = createApp({
             products: [],
             cartItems: [],
             isCartOpen: false,
+            bDark: null
         };
     },
     created() {
