@@ -1,7 +1,5 @@
-Karen
-.img-logo {
-  width: 5rem;
-  background-color: antiquewhite;
+.img-logo{
+  width: 12rem;
 }
 
 .nav-estilo {
@@ -22,6 +20,8 @@ body {
   background-color: #c2c5aa;
 }
 
+/* #c2c5aa;*/
+
 .card-style {
   background-color: #656d4a;
   color: white;
@@ -35,12 +35,13 @@ body {
 .img-redes{
     width: 2rem;
 }
+footer{
+
+  background-color: #333d29;
+}
 
 .card-style-one{
   background-color: #7f4f24;
   color: white;
 }
-=======
-body {
-  min-height: 100vh;
-}
+
