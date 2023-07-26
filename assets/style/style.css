@@ -45,13 +45,11 @@ footer {
   background-color: #7f4f24;
   color: white;
 }
-Karen
-body.darkmode{
+body.darkmode {
   background-color: #181212;
   color: white;
   transition: all 1.5s ease;
 }
-
 
 /* The switch - the box around the slider */
 .switch {
@@ -61,17 +59,17 @@ body.darkmode{
   display: inline-block;
   width: 3rem;
   height: 1.5rem;
- }
- 
- /* Hide default HTML checkbox */
- .switch input {
+}
+
+/* Hide default HTML checkbox */
+.switch input {
   opacity: 1;
   width: 0;
   height: 0;
- }
- 
- /* The slider */
- .slider {
+}
+
+/* The slider */
+.slider {
   position: absolute;
   cursor: pointer;
   top: 0;
@@ -79,12 +77,12 @@ body.darkmode{
   right: 0;
   bottom: 0px;
   background: #100344;
-  transition: .4s;
+  transition: 0.4s;
   border-radius: 30px;
   border: 1px solid #ccc;
- }
- 
- .slider:before {
+}
+
+.slider:before {
   position: absolute;
   content: "";
   height: 1.3em;
@@ -95,17 +93,17 @@ body.darkmode{
   bottom: 0;
   background-color: white;
   box-shadow: 0 2px 5px #999999;
-  transition: .4s;
- }
- 
- input:checked + .slider {
+  transition: 0.4s;
+}
+
+input:checked + .slider {
   background-color: #cdb938;
   border: 1px solid transparent;
- }
- 
- input:checked + .slider:before {
+}
+
+input:checked + .slider:before {
   transform: translateX(1.5em);
- }
+}
 .shoppingCart {
   position: fixed;
   bottom: 20px;
@@ -118,11 +116,3 @@ body.darkmode{
   -webkit-box-shadow: 10px 10px 38px 0px rgba(24, 38, 11, 0.75);
   -moz-box-shadow: 10px 10px 38px 0px rgba(24, 38, 11, 0.75);
 }
-/* .card {
-  transition: all 0.2s;
-}
-.card:hover {
-  transform: scale(1.15);
-  translate: 0px 0px 2rem;
-} */
-
