@@ -19,7 +19,7 @@
         <nav class="navbar navbar-expand-lg bg-dark border-bottom border-bottom-dark p-0" data-bs-theme="dark"
             id="nav-main">
             <div class="container-fluid nav-estilo d-flex justify-content-between">
-                <a class="navbar-brand" href="#"><img src="./assets/images/LOGO_PET_STATION.png" alt="logo"
+                <a class="navbar-brand" href="#"><img src="../images/logo_animalaria.png" alt="logo"
                         class="img-logo rounded-4"></a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
                     data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false"
@@ -30,8 +30,12 @@
                     <div class="navbar-nav d-flex justify-content-end w-100">
                         <a class="nav-link  " aria-current="page" href="../../index.html">HOME</a>
                         <a class="nav-link active fw-bolder" href="#">FARMACIA</a>
-                        <a class="nav-link" href="../pages/juguetes.html">JUGUETES</a>
-                        <a class="nav-link" href="../pages/contacto.html">CONTACTO</a>
+                        <a class="nav-link" href="./juguetes.html">JUGUETES</a>
+                        <a class="nav-link" href="./contacto.html">CONTACTO</a>
+                        <label class="switch" >
+                            <input type="checkbox" id="bdark">
+                            <span class="slider"></span>
+                        </label>
                     </div>
                 </div>
             </div>
@@ -72,16 +76,11 @@
                 </div>
             </div>
         </div>
-<<<<<<< HEAD
-
-        <div class="d-flex flex-column align-sm-items-center flex-md-row flex-md-wrap justify-content-md-evenly flex-lg-row flex-lg-wrap justify-content-lg-evenly col-lg-9 flex-grow-1 gap-4 align-self-center">
-            <template v-for="item of itemsFarmacia">
-=======
         <div
             class="d-flex flex-column align-sm-items-center flex-md-row flex-md-wrap justify-content-md-evenly flex-lg-row flex-lg-wrap justify-content-lg-evenly col-lg-9 flex-grow-1 gap-4 align-self-center">
             <template v-if="radios == 'todo' " v-for="item of itemsFiltrados" :key="item.id">
->>>>>>> 715b7ecd9316431eeb3e48320969a028ccfde933
-                <div class="card col-11 col-lg-3 col-md-4">
+                <div
+                    class="card col-11 col-lg-3 col-md-4 position-relative align-self-center align-self-lg-stretch boxShadow">
                     <img v-bind:src="item.imagen" class="card-img-top" b-bind:alt="item.nombre">
                     <div class="card-body ">
                         <h5 class="card-title">{{item.producto}}</h5>
@@ -102,7 +101,9 @@
                             </div>
                             <div>
                                 <p>${{item.precio}} Pesos</p>
-                                <p>Stock: {{item.disponibles}}</p>
+                                <template v-if="item.disponibles < 3">
+                                    <p class="position-absolute top-0 start-0 text-danger p-2">¡¡Ultimas Unidades!!</p>
+                                </template>
                             </div>
                             <div class="quantity-control">
                                 <button class="btn" id="btnMas" @click="addToCart(item)">+</button>
@@ -168,10 +169,6 @@
             </template>
         </div>
 
-        <i class="bi bi-cart"></i>
-        <i class="bi bi-cart-check"></i>
-
-
         <div class="shoppingCart">
             <button class="btn btn-primary" type="button" @click="toggleCart" data-bs-toggle="offcanvas"
                 data-bs-target="#offcanvasRight" aria-controls="offcanvasRight" id="buttonCart">
@@ -234,6 +231,7 @@
         
     <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
     <script src="../scripts/farmacia.js"></script>
+    <script src="../scripts/main.js"></script>
 </body>
 
 </html>
