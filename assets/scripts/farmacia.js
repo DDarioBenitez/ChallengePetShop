@@ -17,6 +17,10 @@ let farmacia = createApp({
             mayorMenor: [],
             menorMayor: [],
             itemsFiltrados: []
+            products: [],
+            pharmacyItems: [],
+            cartItems: [],
+            isCartOpen: false,
         }
     },
     created() {
@@ -31,6 +35,12 @@ let farmacia = createApp({
                 console.log(this.mayorMenor);
                 this.mayorMenor = [... this.itemsFarmacia].sort((a, b) => b.precio - a.precio)
                 console.log(this.menorMayor);
+                this.cartItems = [];
+                let pharmacy = datos.map(product => product.categoria == "farmacia")
+                console.log(pharmacy)
+                this.products = datos
+                this.cartItems = "",
+                console.log(this.products)
             })
             .catch(error => console.error("F"))
     },
@@ -50,10 +60,16 @@ let farmacia = createApp({
 
             console.log(this.itemsFiltrados);
         },
-        // filtrarRadio(){
-        //     this
-        // }
-    }
+    methods: {
+        addToCart(product) {
+            this.cartItems = [...this.cartItems, product];
+            console.log('Cart Items:', this.cartItems);
+        },
+        toggleCart() {
+            this.isCartOpen = !this.isCartOpen;
+            console.log('isCartOpen:', this.isCartOpen);
+        }
+    },
 })
 
 farmacia.mount("#main")
