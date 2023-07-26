@@ -26,10 +26,11 @@
                 </button>
                 <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
                     <div class="navbar-nav d-flex justify-content-end w-100">
-                        <a class="nav-link" aria-current="page" href="../../index.html">HOME</a>
+                      
+                        <a class="nav-link  " aria-current="page" href="../../index.html">HOME</a>
                         <a class="nav-link active fw-bolder" href="#">FARMACIA</a>
-                        <a class="nav-link" href="./juguetes.html">JUGUETES</a>
-                        <a class="nav-link" href="./contacto.html">CONTACTO</a>
+                        <a class="nav-link" href="../pages/juguetes.html">JUGUETES</a>
+                        <a class="nav-link" href="../pages/contacto.html">CONTACTO</a
                     </div>
                 </div>
             </div>
@@ -100,17 +101,20 @@
             </form>
 
             <div class="d-flex flex-lg-row align-self-center">
-                <template v-for="categoria of categoria">
-                    <div class="p-2 d-flex flex-wrap justify-content-evenly gap-2">
-                        <div class="form-check">
-                            <input class="form-check-input" type="checkbox" b-bind:value="categoria"
-                                b-bind:id="categoria">
-                            <label class="form-check-label" for="categoria">
-                                {{categoria}}
-                            </label>
-                        </div>
+                <div class="p-2 d-flex flex-wrap justify-content-evenly gap-2">
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="mayor" id="mayor-menor">
+                        <label class="form-check-label" for="mayor-menor">
+                            Mayor Precio - Menor Precio
+                        </label>
                     </div>
-                </template>
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="menor" id="menor-mayor">
+                        <label class="form-check-label" for="menor-mayor">
+                            Menor Precio - Mayor Precio
+                        </label>
+                    </div>
+                </div>
             </div>
         </div>
 
@@ -132,7 +136,7 @@
                                 <div :id="item._id" class="accordion-collapse collapse"
                                     data-bs-parent="#accordionFlushExample">
                                     <div class="accordion-body">
-                                        <h6 class="card-text">{{item.descripcion}}</h6>
+                                        <h6 class="card-text ">{{item.descripcion}}</h6>
                                     </div>
                                 </div>
                             </div>
@@ -144,7 +148,7 @@
             </template>
         </div>
 
-        <i class="bi bi-cart w-100"></i>
+        <i class="bi bi-cart"></i>
         <i class="bi bi-cart-check"></i>
     </main>
 
