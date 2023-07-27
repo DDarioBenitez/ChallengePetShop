@@ -32,116 +32,123 @@ const options = {
             .catch(error => console.log(error))
 
 
-
-    },
-    computed: {
-        totalPrice() {
-            console.log(this.aux);
-            return this.cartItems.reduce(
-                (total, item) => total + item.precio * item.quantity,
-                0
-            );
-        },
-    },
-
-
-    methods: {
-        validateForm() {
-            let email = document.getElementById('exampleInputEmail1').value;
-
-            let emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-            if (!emailRegex.test(email)) {
-                alert("Ingrese una dirección de correo Válida");
-                return;
-            }
-
-            this.showModal = true;
+        computed: {
+            totalPrice() {
+                return this.cartItems.reduce(
+                    (total, item) => total + item.precio * item.quantity,
+                    0
+                );
+            },
         },
 
-        addToCart(product) {
-            const productIndex = this.products.findIndex(item => item._id === product._id);
-            if (productIndex !== -1) {
-                const selectedProduct = this.products[productIndex];
-                if (selectedProduct.disponibles >= 1) {
+
+
+        methods: {
+            validateForm() {
+                let email = document.getElementById('exampleInputEmail1').value;
+
+                let emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+                if (!emailRegex.test(email)) {
+                    alert("Ingrese una dirección de correo Válida");
+                    return;
+                }
+
+                this.showModal = true;
+            },
+
+            addToCart(product) {
+                const productIndex = this.products.findIndex(item => item._id === product._id);
+                if (productIndex !== -1) {
+                    const selectedProduct = this.products[productIndex];
+                    if (selectedProduct.disponibles >= 1) {
+                        const cartItemIndex = this.cartItems.findIndex(item => item._id === product._id);
+                        if (cartItemIndex !== -1) {
+                            this.cartItems[cartItemIndex].quantity++;
+                        } else {
+                            this.cartItems.push({ ...selectedProduct, quantity: 1 });
+                        }
+                        selectedProduct.disponibles--;
+                    } else {
+                        alert("Lo sentimos, El Producto ya está agotado.");
+                    }
+                }
+                this.storeCartItems();
+            },
+
+            removeFromCart(product) {
+                const productIndex = this.products.findIndex(item => item._id === product._id);
+                if (productIndex !== -1) {
+                    const selectedProduct = this.products[productIndex];
                     const cartItemIndex = this.cartItems.findIndex(item => item._id === product._id);
                     if (cartItemIndex !== -1) {
-                        this.cartItems[cartItemIndex].quantity++;
-                    } else {
-                        this.cartItems.push({ ...selectedProduct, quantity: 1 });
+                        if (this.cartItems[cartItemIndex].quantity > 1) {
+                            this.cartItems[cartItemIndex].quantity--;
+                        } else {
+                            this.cartItems.splice(cartItemIndex, 1);
+                        }
+                        selectedProduct.disponibles++;
                     }
-                    selectedProduct.disponibles--;
-                } else {
-                    alert("Lo sentimos, El Producto ya está agotado.");
                 }
-            }
-            this.storeCartItems();
-        },
+                this.storeCartItems();
+            },
 
-        removeFromCart(product) {
-            const productIndex = this.products.findIndex(item => item._id === product._id);
-            if (productIndex !== -1) {
-                const selectedProduct = this.products[productIndex];
-                const cartItemIndex = this.cartItems.findIndex(item => item._id === product._id);
-                if (cartItemIndex !== -1) {
-                    if (this.cartItems[cartItemIndex].quantity > 1) {
-                        this.cartItems[cartItemIndex].quantity--;
-                    } else {
-                        this.cartItems.splice(cartItemIndex, 1);
+
+            clearCart() {
+
+                this.cartItems.forEach(item => {
+                    const productIndex = this.products.findIndex(p => p._id === item._id);
+                    if (productIndex !== -1) {
+                        this.products[productIndex].disponibles += item.quantity;
                     }
-                    selectedProduct.disponibles++;
-                }
-            }
-            this.storeCartItems();
-        },
+                });
 
+                this.cartItems = [];
+                this.storeCartItems();
+            },
 
-        clearCart() {
+            updateStock() {
+                this.cartItems.forEach((item) => {
+                    const productIndex = this.products.findIndex(
+                        (p) => p._id === item._id
+                    );
+                    if (productIndex !== -1) {
+                        this.products[productIndex].disponibles -= item.quantity;
+                    }
+                });
+            },
 
-            this.cartItems.forEach(item => {
-                const productIndex = this.products.findIndex(p => p._id === item._id);
-                if (productIndex !== -1) {
-                    this.products[productIndex].disponibles += item.quantity;
-                }
-            });
+            storeCartItems() {
+                localStorage.setItem('cartItems', JSON.stringify(this.cartItems));
+            },
 
-            this.cartItems = [];
-            this.storeCartItems();
-        },
+            toggleCart() {
+                this.isCartOpen = !this.isCartOpen;
+                console.log('isCartOpen:', this.isCartOpen);
 
-        updateStock() {
-            this.cartItems.forEach((item) => {
-                const productIndex = this.products.findIndex(
-                    (p) => p._id === item._id
-                );
-                if (productIndex !== -1) {
-                    this.products[productIndex].disponibles -= item.quantity;
-                }
-            });
-        },
+            },
 
-        storeCartItems() {
-            localStorage.setItem('cartItems', JSON.stringify(this.cartItems));
-        },
+            updateStock() {
+                this.cartItems.forEach((item) => {
+                    const productIndex = this.products.findIndex(
+                        (p) => p._id === item._id
+                    );
+                    if (productIndex !== -1) {
+                        this.products[productIndex].disponibles -= item.quantity;
+                    }
+                });
+            },
 
-        toggleCart() {
-            this.isCartOpen = !this.isCartOpen;
-            console.log('isCartOpen:', this.isCartOpen);
+            buyItems() {
+                this.updateStock();
+                this.clearCart();
+                this.isPurchased = true;
+            },
 
-        },
-
-        buyItems() {
-
-            this.updateStock();
-            this.clearCart();
-            this.isPurchased = true;
-        },
-        buyAgain() {
-            this.isPurchased = false;
-            this.clearCart();
-        },
-
-    },
-
+            buyAgain() {
+                this.isPurchased = false;
+                this.isPurchased = false;
+            },
+=======
 
 };
 
