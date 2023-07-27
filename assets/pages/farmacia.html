@@ -37,8 +37,8 @@
         </nav>
     </header>
 
-    <main class="d-flex flex-column flex-grow-1 pt-2 container-fluid mt-2 mb-2 gap-2" id="main">
-        {{filtrarBusqueda}}
+    <main class="d-flex flex-column flex-grow-1 pt-2 container-fluid p-3 gap-2" id="main">
+        <span v-cloak>{{filtrarBusqueda}}</span>
         <div class="d-flex flex-column col-lg-12flex-lg-wrap">
             <form class="d-flex col-10 col-lg-5 align-self-center" role="search">
                 <input class="form-control me-2" type="search" aria-label="Search" v-model="search"
@@ -76,11 +76,10 @@
             class="d-flex flex-column align-sm-items-center flex-md-row flex-md-wrap justify-content-md-evenly flex-lg-row flex-lg-wrap justify-content-lg-evenly col-lg-9 flex-grow-1 gap-4 align-self-center">
 
 
-            <template v-if="radios == 'todo' " v-for="item of itemsFiltrados" :key="item.id">
+            <template v-if=" radios == 'todo' " v-for="item of itemsFiltrados" :key="item.id">
                 <div
-                    class="card col-11 col-lg-3 col-md-4 position-relative align-self-center align-self-lg-stretch boxShadow bg-transparent">
-                    <img v-bind:src="item.imagen" class="card-img-top object-fit-contain h-100"
-                        b-bind:alt="item.nombre">
+                    class="card col-11 col-lg-3 col-md-4 position-relative align-self-center align-self-lg-stretch boxShadow bg-transparent text-dark fw-bolder">
+                    <img v-bind:src="item.imagen" class="card-img-top object-fit-fill h-100" b-bind:alt="item.nombre">
                     <div class="card-body d-flex flex-column justify-content-around">
                         <h5 class="card-title text-center">{{item.producto}}</h5>
                         <!-- Button trigger modal -->
@@ -134,12 +133,11 @@
                     </div>
                 </div>
             </template>
-            <template v-if="radios == 'mayor'" v-for="item of itemsFiltrados">
+            <template v-if=" radios == 'mayor' " v-for="item of itemsFiltrados">
                 <div
-                    class="card col-11 col-lg-3 col-md-4 position-relative align-self-center align-self-lg-stretch boxShadow">
-                    <img v-bind:src="item.imagen" class="card-img-top object-fit-contain h-100"
-                        b-bind:alt="item.nombre">
-                    <div class="card-body d-flex flex-column justify-content-end">
+                    class="card col-11 col-lg-3 col-md-4 position-relative align-self-center align-self-lg-stretch boxShadow bg-transparent text-dark fw-bolder">
+                    <img v-bind:src="item.imagen" class="card-img-top object-fit-fill h-100" b-bind:alt="item.nombre">
+                    <div class="card-body d-flex flex-column justify-content-around">
                         <h5 class="card-title text-center">{{item.producto}}</h5>
                         <!-- Button trigger modal -->
                         <button type="button" class="btn btn-primary bg-success col-8 align-self-center"
@@ -150,8 +148,8 @@
                         <div class="modal fade" :id="item._id" tabindex="-1" aria-labelledby="exampleModalLabel"
                             aria-hidden="true">
                             <div class="modal-dialog">
-                                <div class="modal-content">
-                                    <div class="modal-body">
+                                <div class="modal-content bg-success-subtle">
+                                    <div class="modal-body fs-5">
                                         {{item.descripcion}}
                                     </div>
                                     <div class="modal-footer">
@@ -163,29 +161,40 @@
                         </div>
                     </div>
                     <div class="d-flex flex-column justify-content-end">
-                        <p class="text-center">Precio: ${{item.precio}} Pesos</p>
+                        <p class="text-center fs-4">Precio: ${{item.precio}} Pesos</p>
                         <template v-if="item.disponibles < 3 && item.disponibles > 0">
-                            <p class="position-absolute top-0 start-0 text-danger p-2">¡¡Ultimas Unidades!!</p>
+                            <p class="position-absolute top-0 start-0 text-danger p-2 fw-bolder">¡¡Ultimas Unidades!!
+                            </p>
                         </template>
+
                         <template v-if="item.disponibles == 0">
-                            <h2
-                                class="position-absolute top-0 start-0 text-danger p-2 position-absolute top-50 start-50 translate-middle bg-secondary w-100 text-center">
-                                Agotado :c</h2>
+                            <h4
+                                class="position-absolute top-0 start-0 text-dark p-2 position-absolute top-50 start-50 translate-middle bg-info-subtle w-100 text-center">
+                                Agotado :c</h4>
+                            <div class="quantity-control p-2 d-flex justify-content-between h-50 align-items-center">
+                                <p class="p-4 text-center fs-5"> {{ item.disponibles }} </p>
+                                <button type="button" class="btn btn-outline-danger disabled"> <i
+                                        class="bi bi-cart4"></i>
+                                    Añadir</button>
+                            </div>
                         </template>
-                        <div class="quantity-control p-2 d-flex justify-content-between h-50 align-items-center">
-                            <span class="p-4 text-center"> {{ item.disponibles }} </span>
-                            <button type="button" class="btn btn-outline-danger"> <i class="bi bi-cart4"></i>
-                                Añadir</button>
-                        </div>
+
+                        <template v-else>
+                            <div class="quantity-control p-2 d-flex justify-content-between h-50 align-items-center">
+                                <p class="p-4 text-center fs-5 fw-bolder"> {{ item.disponibles }} </p>
+                                <button type="button" class="btn btn-outline-danger" @click="addToCart(item)"> <i
+                                        class="bi bi-cart4"></i>
+                                    Añadir</button>
+                            </div>
+                        </template>
                     </div>
                 </div>
             </template>
-            <template v-if="radios == 'menor'" v-for="item of itemsFiltrados">
+            <template v-if=" radios == 'menor' " v-for="item of itemsFiltrados">
                 <div
-                    class="card col-11 col-lg-3 col-md-4 position-relative align-self-center align-self-lg-stretch boxShadow">
-                    <img v-bind:src="item.imagen" class="card-img-top object-fit-contain h-100"
-                        b-bind:alt="item.nombre">
-                    <div class="card-body d-flex flex-column justify-content-end">
+                    class="card col-11 col-lg-3 col-md-4 position-relative align-self-center align-self-lg-stretch boxShadow bg-transparent text-dark fw-bolder">
+                    <img v-bind:src="item.imagen" class="card-img-top object-fit-fill h-100" b-bind:alt="item.nombre">
+                    <div class="card-body d-flex flex-column justify-content-around">
                         <h5 class="card-title text-center">{{item.producto}}</h5>
                         <!-- Button trigger modal -->
                         <button type="button" class="btn btn-primary bg-success col-8 align-self-center"
@@ -196,55 +205,47 @@
                         <div class="modal fade" :id="item._id" tabindex="-1" aria-labelledby="exampleModalLabel"
                             aria-hidden="true">
                             <div class="modal-dialog">
-                                <div class="modal-content">
-                                    <div class="modal-body">
+                                <div class="modal-content bg-success-subtle">
+                                    <div class="modal-body fs-5">
                                         {{item.descripcion}}
                                     </div>
                                     <div class="modal-footer">
                                         <button type="button" class="btn btn-secondary"
                                             data-bs-dismiss="modal">Close</button>
-                                        <div class="card col-11 col-lg-3 col-md-4">
-                                            <img v-bind:src="item.imagen" class="card-img-top" b-bind:alt="item.nombre">
-                                            <div class="card-body ">
-                                                <h5 class="card-title">{{item.producto}}</h5>
-                                                <div class="accordion accordion-flush" id="accordionFlushExample">
-                                                    <div class="accordion-item">
-                                                        <h2 class="accordion-header">
-                                                            <button class="accordion-button collapsed" type="button"
-                                                                data-bs-toggle="collapse" :data-bs-target=`#${item._id}`
-                                                                aria-expanded="false" :aria-controls="item._id">
-                                                                Ver mas
-                                                            </button>
-                                                        </h2>
-                                                        <div :id="item._id" class="accordion-collapse collapse"
-                                                            data-bs-parent="#accordionFlushExample">
-                                                            <div class="accordion-body">
-                                                                <h6 class="card-text ">{{item.descripcion}}</h6>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="d-flex flex-column justify-content-end">
-                                                <p class="text-center">Precio: ${{item.precio}} Pesos</p>
-                                                <template v-if="item.disponibles < 3 && item.disponibles > 0">
-                                                    <p class="position-absolute top-0 start-0 text-danger p-2">¡¡Ultimas
-                                                        Unidades!!</p>
-                                                </template>
-                                                <template v-if="item.disponibles == 0">
-                                                    <h2
-                                                        class="position-absolute top-0 start-0 text-danger p-2 position-absolute top-50 start-50 translate-middle bg-secondary w-100 text-center">
-                                                        Agotado :c</h2>
-                                                </template>
-                                                <div
-                                                    class="quantity-control p-2 d-flex justify-content-between h-50 align-items-center">
-                                                    <span class="p-4 text-center"> {{ item.disponibles }} </span>
-                                                    <button type="button" class="btn btn-outline-danger"> <i
-                                                            class="bi bi-cart4"></i>
-                                                        Añadir</button>
-                                                </div>
-                                            </div>
-                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="d-flex flex-column justify-content-end">
+                        <p class="text-center fs-4">Precio: ${{item.precio}} Pesos</p>
+                        <template v-if="item.disponibles < 3 && item.disponibles > 0">
+                            <p class="position-absolute top-0 start-0 text-danger p-2 fw-bolder">¡¡Ultimas Unidades!!
+                            </p>
+                        </template>
+
+                        <template v-if="item.disponibles == 0">
+                            <h4
+                                class="position-absolute top-0 start-0 text-dark p-2 position-absolute top-50 start-50 translate-middle bg-info-subtle w-100 text-center">
+                                Agotado :c</h4>
+                            <div class="quantity-control p-2 d-flex justify-content-between h-50 align-items-center">
+                                <p class="p-4 text-center fs-5"> {{ item.disponibles }} </p>
+                                <button type="button" class="btn btn-outline-danger disabled"> <i
+                                        class="bi bi-cart4"></i>
+                                    Añadir</button>
+                            </div>
+                        </template>
+
+                        <template v-else>
+                            <div class="quantity-control p-2 d-flex justify-content-between h-50 align-items-center">
+                                <p class="p-4 text-center fs-5 fw-bolder"> {{ item.disponibles }} </p>
+                                <button type="button" class="btn btn-outline-danger" @click="addToCart(item)"> <i
+                                        class="bi bi-cart4"></i>
+                                    Añadir</button>
+                            </div>
+                        </template>
+                    </div>
+                </div>
             </template>
             <template v-if="itemsFiltrados.length == 0 ">
                 <h1 class="align-self-center">No hay coincidencias</h1>
@@ -276,6 +277,7 @@
                     <template v-else>
                         <p>No hay nada en el carrito</p>
                     </template>
+                    </template>
                     <button class="btn btn-sm" @click="clearCart" id="btnVaciar">Vaciar Carrito</button>
                     <div v-show="isPurchased" class="alert alert-success" role="alert">
                         Felicitaciones! Tu compra fue exitosa.
@@ -285,12 +287,19 @@
                     </div>
                     <div>
                         <p>Total: ${{ totalPrice.toFixed(2) }}</p>
-                        <button class="btn btn-sm btn-success" @click="buyItems" v-show="!isPurchased"><i
-                                class="fas fa-shopping-cart me-1"></i>Comprar</button>
-
+                        <template v-if="totalPrice==0">
+                            <button class="btn btn-sm btn-success disabled" @click="buyItems" v-show="!isPurchased"><i
+                                    class="fas fa-shopping-cart me-1"></i>Comprar</button>
+                        </template>
+                        <template v-if="totalPrice>0">
+                            <button class="btn btn-sm btn-success" @click="buyItems" v-show="!isPurchased"><i
+                                    class="fas fa-shopping-cart me-1"></i>Comprar</button>
+                        </template>
                     </div>
                 </div>
             </div>
+        </div>
+        </div>
         </div>
     </main>
 
