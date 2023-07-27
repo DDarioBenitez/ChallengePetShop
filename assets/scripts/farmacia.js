@@ -52,7 +52,7 @@ let farmacia = createApp({
   },
   computed: {
     tem() {
-      this.bDark == true ? this.tema = 'card col-11 col-lg-3 col-md-4 position-relative align-self-center align-self-lg-stretch boxShadow text-light bg-dark' : this.tema = 'card col-11 col-lg-3 col-md-4 position-relative align-self-center align-self-lg-stretch boxShadow card-tema'
+      this.bDark == true ? this.tema = 'card col-11 col-lg-3 col-md-4 position-relative align-self-center align-self-lg-stretch boxShadow text-light bg-dark' : this.tema = 'card col-11 col-lg-3 col-md-4 position-relative align-self-center align-self-lg-stretch boxShadow text-dark card-tema'
     },
     filtrarBusqueda() {
       if (this.radios == "todo") {

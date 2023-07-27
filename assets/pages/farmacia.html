@@ -94,8 +94,8 @@
                         <div class="modal fade" :id="item._id" tabindex="-1" aria-labelledby="exampleModalLabel"
                             aria-hidden="true">
                             <div class="modal-dialog">
-                                <div class="modal-content">
-                                    <div class="modal-body">
+                                <div class="modal-content bg-success-subtle">
+                                    <div class="modal-body text-dark">
                                         {{item.descripcion}}
                                     </div>
                                     <div class="modal-footer">
@@ -107,7 +107,7 @@
                         </div>
                     </div>
                     <div class="d-flex flex-column justify-content-end">
-                        <p class="text-center">Precio: ${{item.precio}} Pesos</p>
+                        <p class="text-center fs-2">Precio: ${{item.precio}} Pesos</p>
                         <template v-if="item.disponibles < 3 && item.disponibles > 0">
                             <p class="position-absolute top-0 start-0 text-danger p-2">¡¡Ultimas Unidades!!</p>
                         </template>
@@ -117,7 +117,7 @@
                                 class="position-absolute top-0 start-0 text-dark p-2 position-absolute top-50 start-50 translate-middle bg-info-subtle w-100 text-center">
                                 Agotado :c</h4>
                             <div class="quantity-control p-2 d-flex justify-content-between h-50 align-items-center">
-                                <span class="p-4 text-center"> {{ item.disponibles }} </span>
+                                <span class="p-4 text-center fs-4"> {{ item.disponibles }} </span>
                                 <button type="button" class="btn btn-outline-danger disabled"> <i
                                         class="bi bi-cart4"></i>
                                     Añadir</button>
