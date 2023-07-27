@@ -1,7 +1,7 @@
 let { createApp } = Vue
 
 const options = {
-    data(){
+    data() {
         return {
             showModal: false,
             formData: {
@@ -9,42 +9,73 @@ const options = {
             },
             products: [],
             cartItems: [],
-            isCartOpen: false,           
-        }},
-        created(){
-            const cartItems = JSON.parse(localStorage.getItem('cartItems'));
-            if (cartItems) {
+            isCartOpen: false,
+            isPurchased: false,
+        }
+    },
+    created() {
+        const cartItems = JSON.parse(localStorage.getItem('cartItems'));
+        if (cartItems) {
             this.cartItems = cartItems;
         }
-            fetch('https://mindhub-xj03.onrender.com/api/petshop')
+        fetch('https://mindhub-xj03.onrender.com/api/petshop')
             .then(response => response.json())
             .then(data => {
-                
+                this.products = datos;
+                this.cartItems = [];
+
                 let storedCartItems = JSON.parse(localStorage.getItem('cartItems'));
-                    if (storedCartItems) {
-                        this.cartItems = storedCartItems;
-                    }
+                if (storedCartItems) {
+                    this.cartItems = storedCartItems;
+                }
             })
             .catch(error => console.log(error))
 
-        
 
-        },
 
-        
+    },
+    computed:{
+        totalPrice() {
+            console.log(this.aux);
+            return this.cartItems.reduce(
+              (total, item) => total + item.precio * item.quantity,
+              0
+            );
+          },
+    },
+
 
     methods: {
         validateForm() {
-            let email = document.getElementById('exampleInputEmail1').value;           
+            let email = document.getElementById('exampleInputEmail1').value;
 
             let emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
             if (!emailRegex.test(email)) {
                 alert("Ingrese una dirección de correo Válida");
                 return;
-            }                     
-            
+            }
+
             this.showModal = true;
-        },        
+        },
+
+        addToCart(product) {
+            const productIndex = this.products.findIndex(item => item._id === product._id);
+            if (productIndex !== -1) {
+                const selectedProduct = this.products[productIndex];
+                if (selectedProduct.disponibles >= 1) {
+                    const cartItemIndex = this.cartItems.findIndex(item => item._id === product._id);
+                    if (cartItemIndex !== -1) {
+                        this.cartItems[cartItemIndex].quantity++;
+                    } else {
+                        this.cartItems.push({ ...selectedProduct, quantity: 1 });
+                    }
+                    selectedProduct.disponibles--;
+                } else {
+                    alert("Lo sentimos, El Producto ya está agotado.");
+                }
+            }
+            this.storeCartItems();
+        },
 
         removeFromCart(product) {
             const productIndex = this.products.findIndex(item => item._id === product._id);
@@ -63,6 +94,7 @@ const options = {
             this.storeCartItems();
         },
 
+
         clearCart() {
 
             this.cartItems.forEach(item => {
@@ -76,6 +108,17 @@ const options = {
             this.storeCartItems();
         },
 
+        updateStock() {
+            this.cartItems.forEach((item) => {
+                const productIndex = this.products.findIndex(
+                    (p) => p._id === item._id
+                );
+                if (productIndex !== -1) {
+                    this.products[productIndex].disponibles -= item.quantity;
+                }
+            });
+        },
+
         storeCartItems() {
             localStorage.setItem('cartItems', JSON.stringify(this.cartItems));
         },
@@ -83,12 +126,25 @@ const options = {
         toggleCart() {
             this.isCartOpen = !this.isCartOpen;
             console.log('isCartOpen:', this.isCartOpen);
+
         },
 
+        buyItems() {
 
-    }
+            this.updateStock();
+            this.clearCart();
+            this.isPurchased = true;
+        },
+        buyAgain() {
+            this.isPurchased = false;
+            this.clearCart();
+        },
+
+    },
+
+
 };
 
-const app = createApp( options )
+const app = createApp(options)
 
-app.mount( '#app' )
+app.mount('#app')
