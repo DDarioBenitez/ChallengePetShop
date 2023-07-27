@@ -83,7 +83,7 @@
 
             <template v-if="radios == 'todo' " v-for="item of itemsFiltrados" :key="item.id">
                 <div
-                    class="card col-11 col-lg-3 col-md-4 position-relative align-self-center align-self-lg-stretch boxShadow">
+                    class="card col-11 col-lg-3 col-md-4 position-relative align-self-center align-self-lg-stretch boxShadow bg-transparent">
                     <img v-bind:src="item.imagen" class="card-img-top object-fit-contain h-100"
                         b-bind:alt="item.nombre">
                     <div class="card-body d-flex flex-column justify-content-around">
@@ -97,8 +97,8 @@
                         <div class="modal fade" :id="item._id" tabindex="-1" aria-labelledby="exampleModalLabel"
                             aria-hidden="true">
                             <div class="modal-dialog">
-                                <div class="modal-content">
-                                    <div class="modal-body">
+                                <div class="modal-content bg-success-subtle">
+                                    <div class="modal-body fs-5">
                                         {{item.descripcion}}
                                     </div>
                                     <div class="modal-footer">
@@ -110,9 +110,10 @@
                         </div>
                     </div>
                     <div class="d-flex flex-column justify-content-end">
-                        <p class="text-center">Precio: ${{item.precio}} Pesos</p>
+                        <p class="text-center fs-4">Precio: ${{item.precio}} Pesos</p>
                         <template v-if="item.disponibles < 3 && item.disponibles > 0">
-                            <p class="position-absolute top-0 start-0 text-danger p-2">¡¡Ultimas Unidades!!</p>
+                            <p class="position-absolute top-0 start-0 text-danger p-2 fw-bolder">¡¡Ultimas Unidades!!
+                            </p>
                         </template>
 
                         <template v-if="item.disponibles == 0">
@@ -120,7 +121,7 @@
                                 class="position-absolute top-0 start-0 text-dark p-2 position-absolute top-50 start-50 translate-middle bg-info-subtle w-100 text-center">
                                 Agotado :c</h4>
                             <div class="quantity-control p-2 d-flex justify-content-between h-50 align-items-center">
-                                <span class="p-4 text-center"> {{ item.disponibles }} </span>
+                                <p class="p-4 text-center fs-5"> {{ item.disponibles }} </p>
                                 <button type="button" class="btn btn-outline-danger disabled"> <i
                                         class="bi bi-cart4"></i>
                                     Añadir</button>
@@ -129,7 +130,7 @@
 
                         <template v-else>
                             <div class="quantity-control p-2 d-flex justify-content-between h-50 align-items-center">
-                                <span class="p-4 text-center"> {{ item.disponibles }} </span>
+                                <p class="p-4 text-center fs-5 fw-bolder"> {{ item.disponibles }} </p>
                                 <button type="button" class="btn btn-outline-danger" @click="addToCart(item)"> <i
                                         class="bi bi-cart4"></i>
                                     Añadir</button>
@@ -259,7 +260,7 @@
         <div class="shoppingCart">
             <button class="btn btn-danger" type="button" @click="toggleCart" data-bs-toggle="offcanvas"
                 data-bs-target="#offcanvasRight" aria-controls="offcanvasRight" id="buttonCart">
-                <i class="fas fa-shopping-cart"></i></button>
+                <i class="fas fa-shopping-cart fs-4"></i></button>
 
             <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasRight" aria-labelledby="offcanvasRightLabel"
                 git>
