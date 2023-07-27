@@ -24,9 +24,9 @@ body {
 
 /* #c2c5aa;*/
 
-.card-style {
+.card{
   background-color: #656d4a;
-  color: white;
+  color: rgb(18, 14, 14);
 }
 
 .button-a {
@@ -49,7 +49,7 @@ footer {
 
 body.darkmode{
   background-color: #181212;
-  color: white;
+  color: white !important;
   transition: all 1.5s ease;
 }
 
