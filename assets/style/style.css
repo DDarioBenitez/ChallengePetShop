@@ -26,7 +26,6 @@ footer {
   color: white;
 }
 
-
 body {
   background-color: #dbe58b;
   /* transition: all 1.5s ease; */
@@ -35,7 +34,7 @@ body {
 
 /* #c2c5aa;*/
 
-.card{
+.card {
   background-color: #464b32;
   color: white;
 }
@@ -53,7 +52,13 @@ body {
   background-color: #7f4f24;
   color: white;
 }
-
+.card-tema {
+  background: transparent;
+  transition: all 1.5s ease;
+}
+.bg-dark {
+  transition: all 1.5s ease;
+}
 body.darkmode {
   background-color: #181212;
   color: white !important;
