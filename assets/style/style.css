@@ -181,3 +181,4 @@ input:checked + .slider:before {
 .offcanvas.show {
   transform: translateX(0);
 }
+
