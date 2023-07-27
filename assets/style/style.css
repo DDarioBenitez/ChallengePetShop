@@ -175,6 +175,3 @@ iframe{
 .offcanvas.show {
   transform: translateX(0);
 }
-[v-cloak] {
-  display: none;
-}
