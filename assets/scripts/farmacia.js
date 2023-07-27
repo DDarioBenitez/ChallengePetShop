@@ -130,12 +130,14 @@ let farmacia = createApp({
 
 
     clearCart() {
+
       this.cartItems.forEach(item => {
         const productIndex = this.products.findIndex(p => p._id === item._id);
         if (productIndex !== -1) {
           this.products[productIndex].disponibles += item.quantity;
         }
       });
+
       this.cartItems = [];
       this.storeCartItems();
     },
@@ -160,7 +162,9 @@ let farmacia = createApp({
       console.log('isCartOpen:', this.isCartOpen);
 
     },
+
     buyItems() {
+
       this.updateStock();
       this.clearCart();
       this.isPurchased = true;
@@ -169,7 +173,11 @@ let farmacia = createApp({
       this.isPurchased = false;
       this.clearCart();
     },
+
   },
+
+
+
 })
 
 farmacia.mount("#main");
