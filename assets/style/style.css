@@ -1,20 +1,31 @@
-.img-logo {
-  width: 12rem;
-}
-
-.nav-estilo {
-  background-color: #333d29;
-}
-
 .c-item {
-  height: 20rem;
+  height: 100vh;
 }
 
 .c-img {
   height: 100%;
   object-fit: cover;
-  filter: brightness(0.6);
+  filter: brightness(0.8);
 }
+
+.img-logo {
+  width: 14rem;
+}
+
+main {
+  background: url(../images/pexels-fwstudio-129731.jpg);
+  object-fit: cover;
+}
+
+.img-redes {
+  width: 2rem;
+}
+
+footer {
+  background-color: #333d29;
+  color: white;
+}
+
 
 body {
   background-color: #dbe58b;
@@ -24,8 +35,8 @@ body {
 
 /* #c2c5aa;*/
 
-.card-style {
-  background-color: #656d4a;
+.card{
+  background-color: #464b32;
   color: white;
 }
 
@@ -37,23 +48,23 @@ body {
 .img-redes {
   width: 2rem;
 }
-footer {
-  background-color: #333d29;
-  color: white;
-}
 
 .card-style-one {
   background-color: #7f4f24;
   color: white;
 }
-
-body.darkmode{
-  background-color: #181212;
-  color: white;
+.card-tema {
+  background: transparent;
   transition: all 1.5s ease;
 }
-
-
+.bg-dark {
+  transition: all 1.5s ease;
+}
+body.darkmode {
+  background-color: #181212;
+  color: white !important;
+  transition: all 1.5s ease;
+}
 
 /* The switch - the box around the slider */
 .switch {
@@ -63,17 +74,17 @@ body.darkmode{
   display: inline-block;
   width: 3rem;
   height: 1.5rem;
- }
- 
- /* Hide default HTML checkbox */
- .switch input {
+}
+
+/* Hide default HTML checkbox */
+.switch input {
   opacity: 1;
   width: 0;
   height: 0;
- }
- 
- /* The slider */
- .slider {
+}
+
+/* The slider */
+.slider {
   position: absolute;
   cursor: pointer;
   top: 0;
@@ -81,12 +92,12 @@ body.darkmode{
   right: 0;
   bottom: 0px;
   background: #100344;
-  transition: .4s;
+  transition: 0.4s;
   border-radius: 30px;
   border: 1px solid #ccc;
- }
- 
- .slider:before {
+}
+
+.slider:before {
   position: absolute;
   content: "";
   height: 1.3em;
@@ -97,17 +108,17 @@ body.darkmode{
   bottom: 0;
   background-color: white;
   box-shadow: 0 2px 5px #999999;
-  transition: .4s;
- }
- 
- input:checked + .slider {
+  transition: 0.4s;
+}
+
+input:checked + .slider {
   background-color: #cdb938;
   border: 1px solid transparent;
- }
- 
- input:checked + .slider:before {
+}
+
+input:checked + .slider:before {
   transform: translateX(1.5em);
- }
+}
 .shoppingCart {
   position: fixed;
   bottom: 20px;
@@ -136,17 +147,15 @@ body.darkmode{
   z-index: 9999;
 }
 
-
 .shoppingCartButton {
   padding: 10px 15px;
   border-radius: 50%;
-  background-color: #333d29; 
+  background-color: #333d29;
   color: #fff;
   border: none;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
   font-size: 20px;
 }
-
 
 .offcanvas-body {
   padding: 15px;
@@ -157,14 +166,13 @@ body.darkmode{
   bottom: 0;
   right: 0;
   top: 0;
-  z-index: 9998; 
-  width: 300px; 
+  z-index: 9998;
+  width: 300px;
   background-color: #fff;
-  transform: translateX(100%); 
-  transition: transform 0.3s ease-in-out; 
+  transform: translateX(100%);
+  transition: transform 0.3s ease-in-out;
 }
 
 .offcanvas.show {
-  transform: translateX(0); 
+  transform: translateX(0);
 }
-
