@@ -34,14 +34,14 @@ const options = {
 
 
     },
-    computed:{
+    computed: {
         totalPrice() {
             console.log(this.aux);
             return this.cartItems.reduce(
-              (total, item) => total + item.precio * item.quantity,
-              0
+                (total, item) => total + item.precio * item.quantity,
+                0
             );
-          },
+        },
     },
 
 

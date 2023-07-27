@@ -52,21 +52,9 @@ let farmacia = createApp({
             this.cartItems = cartItems;
         }
     },
-    clearCart() {
 
-      this.cartItems.forEach(item => {
-        const productIndex = this.products.findIndex(p => p._id === item._id);
-        if (productIndex !== -1) {
-          this.products[productIndex].disponibles += item.quantity;
-        }
-      });
-
-      this.cartItems = [];
-      this.storeCartItems();
     computed: {
-        tem() {
-            this.bDark == true ? this.tema = 'card col-11 col-lg-3 col-md-4 position-relative align-self-center align-self-lg-stretch boxShadow text-light bg-dark' : this.tema = 'card col-11 col-lg-3 col-md-4 position-relative align-self-center align-self-lg-stretch boxShadow card-tema'
-        },
+
         filtrarBusqueda() {
             if (this.radios == "todo") {
                 this.itemsFiltrados =
@@ -102,6 +90,18 @@ let farmacia = createApp({
     },
 
     methods: {
+        clearCart() {
+
+            this.cartItems.forEach(item => {
+                const productIndex = this.products.findIndex(p => p._id === item._id);
+                if (productIndex !== -1) {
+                    this.products[productIndex].disponibles += item.quantity;
+                }
+            });
+
+            this.cartItems = [];
+            this.storeCartItems();
+        },
 
         addToCart(product) {
             const productIndex = this.products.findIndex(item => item._id === product._id);
@@ -182,27 +182,27 @@ let farmacia = createApp({
         },
     },
     storeCartItems() {
-      localStorage.setItem('cartItems', JSON.stringify(this.cartItems));
+        localStorage.setItem('cartItems', JSON.stringify(this.cartItems));
     },
 
     toggleCart() {
-      this.isCartOpen = !this.isCartOpen;
-      console.log('isCartOpen:', this.isCartOpen);
+        this.isCartOpen = !this.isCartOpen;
+        console.log('isCartOpen:', this.isCartOpen);
 
     },
 
     buyItems() {
 
-      this.updateStock();
-      this.clearCart();
-      this.isPurchased = true;
+        this.updateStock();
+        this.clearCart();
+        this.isPurchased = true;
     },
     buyAgain() {
-      this.isPurchased = false;
-      this.clearCart();
+        this.isPurchased = false;
+        this.clearCart();
     },
 
-  },
+},
 
-})
+)
 farmacia.mount("#main");
