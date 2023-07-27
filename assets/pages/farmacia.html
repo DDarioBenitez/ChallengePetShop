@@ -46,7 +46,8 @@
         {{filtrarBusqueda}}
         <div class="d-flex flex-column col-lg-12flex-lg-wrap">
             <form class="d-flex col-10 col-lg-5 align-self-center" role="search">
-                <input class="form-control me-2" type="search" aria-label="Search" v-model="search" placeholder="Search">
+                <input class="form-control me-2" type="search" aria-label="Search" v-model="search"
+                    placeholder="Search">
                 <button class="btn btn-danger" type="submit">Search</button>
             </form>
 
@@ -173,39 +174,45 @@
             <button class="btn btn-danger" type="button" @click="toggleCart" data-bs-toggle="offcanvas"
                 data-bs-target="#offcanvasRight" aria-controls="offcanvasRight" id="buttonCart">
                 <i class="fas fa-shopping-cart"></i></button>
-        
-            <!-- <template v-show="isCartOpen">
-                <div class="shoppingCart">
-                    <button class="btn btn-primary" type="button" @click="toggleCart" data-bs-toggle="offcanvas"
-                        data-bs-target="#offcanvasRight" aria-controls="offcanvasRight" id="buttonCart">
-                        <i class="fas fa-shopping-cart"></i> Cart ({{ cartItems.length }})
-                    </button> -->
-                
-                    <!-- <template v-show="isCartOpen"> -->
-                        <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasRight" 
-                        aria-labelledby="offcanvasRightLabel"git>
-                            <div class="offcanvas-header">
-                                <h5 class="offcanvas-title" id="offcanvasRightLabel">Tu Carrito de Compras</h5>
-                                <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
-                            </div>
-                            <div class="offcanvas-body">
-                
-                                <template v-if="cartItems.length > 0" v-for="item in cartItems" :key="item.id">
-                                    <ul>
-                                        <li>
-                                            {{ item.producto }} - ${{ item.precio }} (Cantidad: {{ item.quantity }}) -
-                                            <button class="btn btn-sm" @click="removeFromCart(item)" id="btnRemover">Remover</button>
-                                        </li>
-                                    </ul>
-                                </template>
-                                <template v-else>
-                                    <p>No hay nada en el carrito</p>
-                                </template>
-                                <button class="btn btn-sm" @click="clearCart" id="btnVaciar">Vaciar Carrito</button>
-                
-                
-                            </div>
-                        </div>
+
+            <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasRight" aria-labelledby="offcanvasRightLabel"
+                git>
+                <div class="offcanvas-header">
+                    <h5 class="offcanvas-title" id="offcanvasRightLabel">Tu Carrito de Compras</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+                </div>
+                <div class="offcanvas-body">
+
+                    <template v-if="cartItems.length > 0" v-for="item in cartItems" :key="item.id">
+                        <ul>
+                            <li>
+                                {{ item.producto }} - ${{ item.precio }} (Cantidad: {{ item.quantity }}) -
+                                <button class="btn btn-sm" @click="removeFromCart(item)"
+                                    id="btnRemover">Remover</button>
+                            </li>                                                        
+                        </ul>                        
+                    </template>
+                    
+                    <template v-else>
+                        <p>No hay nada en el carrito</p>
+                    </template>
+                    <button class="btn btn-sm" @click="clearCart" id="btnVaciar">Vaciar Carrito</button>
+                    <div v-show="isPurchased" class="alert alert-success" role="alert">
+                        Felicitaciones! Tu compra fue exitosa.
+                        
+                        <button class="btn btn-sm btn-primary mt-2" @click="buyAgain">Seguir Comprando</button>
+
+                    </div>
+                    <div>
+                        <p>Total: ${{ totalPrice.toFixed(2) }}</p>
+                        <button class="btn btn-sm btn-success" @click="buyItems" v-show="!isPurchased"><i class="fas fa-shopping-cart me-1"></i>Comprar</button>
+
+                    </div>
+                    
+
+
+                </div>
+            </div>
             <!-- </template> -->
         </div>
 
