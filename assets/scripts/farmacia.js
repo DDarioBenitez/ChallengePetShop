@@ -46,6 +46,7 @@ let farmacia = createApp({
     if (cartItems) {
       this.cartItems = cartItems;
     }
+    console.log(this.cartItems);
   },
   computed: {
     filtrarBusqueda() {
@@ -128,7 +129,6 @@ let farmacia = createApp({
           this.products[productIndex].disponibles += item.quantity;
         }
       });
-
       this.cartItems = [];
       this.storeCartItems();
     },
@@ -148,7 +148,6 @@ let farmacia = createApp({
       this.isPurchased = true;
     },
     buyAgain() {
-
       this.isPurchased = false;
     },
 

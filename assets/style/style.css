@@ -26,7 +26,6 @@ footer {
   color: white;
 }
 
-
 body {
   background-color: #dbe58b;
   transition: all 1.5s ease;
@@ -35,7 +34,7 @@ body {
 
 /* #c2c5aa;*/
 
-.card{
+.card {
   background-color: #464b32;
   color: white;
 }
@@ -175,4 +174,7 @@ input:checked + .slider:before {
 
 .offcanvas.show {
   transform: translateX(0);
+}
+[v-cloak] {
+  display: none;
 }
