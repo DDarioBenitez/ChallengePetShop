@@ -5,12 +5,8 @@ let farmacia = createApp({
   data() {
     return {
       items: [],
-      nombre: undefined,
       categoria: ["Farmacia", "Jugueteria"],
       id: undefined,
-      precio: undefined,
-      stock: undefined,
-      descripcion: undefined,
       itemsFarmacia: undefined,
       radios: "todo",
       search: "",
@@ -73,7 +69,7 @@ let farmacia = createApp({
           item.producto.toLowerCase().includes(this.search.toLowerCase())
         );
       }
-
+      console.log(this.bDark);
       console.log(this.itemsFiltrados);
     },
 
@@ -152,13 +148,13 @@ let farmacia = createApp({
       this.isPurchased = true;
     },
     buyAgain() {
-      
+
       this.isPurchased = false;
-  },
+    },
 
   },
 
-  
+
 
 })
 
