@@ -17,12 +17,10 @@ let farmacia = createApp({
       mayorMenor: [],
       menorMayor: [],
       itemsFiltrados: [],
-
       products: [],
       cartItems: [],
       isCartOpen: false,
-      isPurchased: false,
-    }
+    };
   },
   created() {
     fetch("https://mindhub-xj03.onrender.com/api/petshop")
@@ -45,7 +43,6 @@ let farmacia = createApp({
 
         this.products = datos;
         this.cartItems = [];
-
       })
       .catch((error) => console.error("F"));
 
