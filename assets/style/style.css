@@ -1,20 +1,31 @@
-.img-logo {
-  width: 12rem;
-}
-
-.nav-estilo {
-  background-color: #333d29;
-}
-
 .c-item {
-  height: 20rem;
+  height: 100vh;
 }
 
 .c-img {
   height: 100%;
   object-fit: cover;
-  filter: brightness(0.6);
+  filter: brightness(0.8);
 }
+
+.img-logo {
+  width: 14rem;
+}
+
+main {
+  background: url(../images/pexels-fwstudio-129731.jpg);
+  object-fit: cover;
+}
+
+.img-redes {
+  width: 2rem;
+}
+
+footer {
+  background-color: #333d29;
+  color: white;
+}
+
 
 body {
   background-color: #dbe58b;
@@ -25,8 +36,8 @@ body {
 /* #c2c5aa;*/
 
 .card{
-  background-color: #656d4a;
-  color: rgb(18, 14, 14);
+  background-color: #464b32;
+  color: white;
 }
 
 .button-a {
@@ -36,10 +47,6 @@ body {
 
 .img-redes {
   width: 2rem;
-}
-footer {
-  background-color: #333d29;
-  color: white;
 }
 
 .card-style-one {
