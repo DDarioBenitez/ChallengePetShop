@@ -88,7 +88,7 @@
                 </template>
             </div>
             <div class="shoppingCart">
-                <button class="btn btn-primary" type="button" @click="toggleCart" data-bs-toggle="offcanvas"
+                <button class="btn btn-danger" type="button" @click="toggleCart" data-bs-toggle="offcanvas"
                     data-bs-target="#offcanvasRight" aria-controls="offcanvasRight"><i
                         class="fas fa-shopping-cart"></i></button>
 
@@ -111,11 +111,6 @@
 
                     </div>
                 </div>
-                <div>
-                    <button class="btn btn-primary" type="button" @click="toggleCart" aria-controls="offcanvasRight">
-                        <i class="fas fa-shopping-cart"></i>
-                    </button>
-                </div>
                 <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasRight"
                     aria-labelledby="offcanvasRightLabel" v-show="isCartOpen">
                     <div class="offcanvas-header">
@@ -134,7 +129,21 @@
     </div>
 
 
-
+    <footer class="pb-2">
+        <section
+            class="container align-items-center d-flex justify-content-around flex-wrap gap-2 align-items-center p-2">
+            <nav class="gap-5">
+                <a href="https://web.whatsapp.com/"><img class="img-redes" src="../images/wpp.png" alt="whatsapp"
+                        title="Whatsapp"></a>
+                <a href="https://es-la.facebook.com/"><img class="img-redes" src="../images/facebook.png" alt="facebook"
+                        title="Facebook"></a>
+                <a href="https://www.instagram.com/"><img class="img-redes" src="../images/instagram.png"
+                        alt="instagram" title="Instagramp"></a>
+            </nav>
+            <small>Derechos de página reservados - Pet station</small>
+            <h5 class="text-light">Cohort - 49</h5>
+        </section>
+    </footer>
 
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"
