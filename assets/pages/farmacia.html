@@ -10,7 +10,7 @@
     <link rel="shortcut icon" href="../images/icon.png" type="image/x-icon">
     <link rel="stylesheet" href="../style/style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    <title>Farmacia</title>
+    <title>Animalaria | Farmacia</title>
 </head>
 
 <body class="d-flex flex-column" id="main">
@@ -187,11 +187,6 @@
                                     Añadir</button>
                             </div>
                         </template>
-                        <div class="quantity-control p-2 d-flex justify-content-between h-50 align-items-center">
-                            <span class="p-4 text-center"> {{ item.disponibles }} </span>
-                            <button type="button" class="btn btn-outline-danger" @click="addToCart(item)"> <i class="bi bi-cart4"></i>
-                                Añadir</button>
-                        </div>
                     </div>
                 </div>
             </template>
@@ -217,48 +212,40 @@
                                     <div class="modal-footer">
                                         <button type="button" class="btn btn-secondary"
                                             data-bs-dismiss="modal">Close</button>
-                                        <div class="card col-11 col-lg-3 col-md-4">
-                                            <img v-bind:src="item.imagen" class="card-img-top" b-bind:alt="item.nombre">
-                                            <div class="card-body ">
-                                                <h5 class="card-title">{{item.producto}}</h5>
-                                                <div class="accordion accordion-flush" id="accordionFlushExample">
-                                                    <div class="accordion-item">
-                                                        <h2 class="accordion-header">
-                                                            <button class="accordion-button collapsed" type="button"
-                                                                data-bs-toggle="collapse" :data-bs-target=`#${item._id}`
-                                                                aria-expanded="false" :aria-controls="item._id">
-                                                                Ver mas
-                                                            </button>
-                                                        </h2>
-                                                        <div :id="item._id" class="accordion-collapse collapse"
-                                                            data-bs-parent="#accordionFlushExample">
-                                                            <div class="accordion-body">
-                                                                <h6 class="card-text ">{{item.descripcion}}</h6>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="d-flex flex-column justify-content-end">
-                                                <p class="text-center">Precio: ${{item.precio}} Pesos</p>
-                                                <template v-if="item.disponibles < 3 && item.disponibles > 0">
-                                                    <p class="position-absolute top-0 start-0 text-danger p-2">¡¡Ultimas
-                                                        Unidades!!</p>
-                                                </template>
-                                                <template v-if="item.disponibles == 0">
-                                                    <h2
-                                                        class="position-absolute top-0 start-0 text-danger p-2 position-absolute top-50 start-50 translate-middle bg-secondary w-100 text-center">
-                                                        Agotado :c</h2>
-                                                </template>
-                                                <div
-                                                    class="quantity-control p-2 d-flex justify-content-between h-50 align-items-center">
-                                                    <span class="p-4 text-center"> {{ item.disponibles }} </span>
-                                                    <button type="button" class="btn btn-outline-danger"> <i
-                                                            class="bi bi-cart4" @click="addToCart(item)"></i>
-                                                        Añadir</button>
-                                                </div>
-                                            </div>
-                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="d-flex flex-column justify-content-end">
+                        <p class="text-center fs-4">Precio: ${{item.precio}} Pesos</p>
+                        <template v-if="item.disponibles < 3 && item.disponibles > 0">
+                            <p class="position-absolute top-0 start-0 text-danger p-2 fw-bolder">¡¡Ultimas Unidades!!
+                            </p>
+                        </template>
+
+                        <template v-if="item.disponibles == 0">
+                            <h4
+                                class="position-absolute top-0 start-0 text-dark p-2 position-absolute top-50 start-50 translate-middle bg-info-subtle w-100 text-center">
+                                Agotado :c</h4>
+                            <div class="quantity-control p-2 d-flex justify-content-between h-50 align-items-center">
+                                <p class="p-4 text-center fs-5"> {{ item.disponibles }} </p>
+                                <button type="button" class="btn btn-outline-danger disabled"> <i
+                                        class="bi bi-cart4"></i>
+                                    Añadir</button>
+                            </div>
+                        </template>
+
+                        <template v-else>
+                            <div class="quantity-control p-2 d-flex justify-content-between h-50 align-items-center">
+                                <p class="p-4 text-center fs-5 fw-bolder"> {{ item.disponibles }} </p>
+                                <button type="button" class="btn btn-outline-danger" @click="addToCart(item)"> <i
+                                        class="bi bi-cart4"></i>
+                                    Añadir</button>
+                            </div>
+                        </template>
+                    </div>
+                </div>
             </template>
             <template v-if="itemsFiltrados.length == 0 ">
                 <h1 class="align-self-center">No hay coincidencias</h1>
@@ -326,7 +313,7 @@
                 <a href="https://www.instagram.com/"><img class="img-redes" src="../images/instagram.png"
                         alt="instagram" title="Instagramp"></a>
             </nav>
-            <small>Derechos de página reservados - Animalaria</small>
+            <small>Derechos de página reservados - Pet station</small>
             <h5 class="text-light">Cohort - 49</h5>
         </section>
     </footer>
