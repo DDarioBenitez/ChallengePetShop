@@ -5,12 +5,8 @@ let farmacia = createApp({
   data() {
     return {
       items: [],
-      nombre: undefined,
       categoria: ["Farmacia", "Jugueteria"],
       id: undefined,
-      precio: undefined,
-      stock: undefined,
-      descripcion: undefined,
       itemsFarmacia: undefined,
       radios: "todo",
       search: "",
@@ -20,6 +16,8 @@ let farmacia = createApp({
       products: [],
       cartItems: [],
       isCartOpen: false,
+      bDark: null,
+      tema: ""
     };
   },
   created() {
@@ -53,16 +51,19 @@ let farmacia = createApp({
     }
   },
   computed: {
+    tem() {
+      this.bDark == true ? this.tema = 'card col-11 col-lg-3 col-md-4 position-relative align-self-center align-self-lg-stretch boxShadow text-light bg-dark' : this.tema = 'card col-11 col-lg-3 col-md-4 position-relative align-self-center align-self-lg-stretch boxShadow card-tema'
+    },
     filtrarBusqueda() {
       if (this.radios == "todo") {
         this.itemsFiltrados =
           this.search.length > 0
             ? this.itemsFarmacia.filter((item) =>
-                item.producto.toLowerCase().includes(this.search.toLowerCase())
-              )
+              item.producto.toLowerCase().includes(this.search.toLowerCase())
+            )
             : (this.itemsFarmacia = this.items.filter(
-                (item) => item.categoria == "farmacia"
-              ));
+              (item) => item.categoria == "farmacia"
+            ));
       }
       if (this.radios == "mayor") {
         this.itemsFiltrados = this.mayorMenor.filter((item) =>
@@ -74,7 +75,7 @@ let farmacia = createApp({
           item.producto.toLowerCase().includes(this.search.toLowerCase())
         );
       }
-
+      console.log(this.bDark);
       console.log(this.itemsFiltrados);
     },
     methods: {

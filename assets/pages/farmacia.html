@@ -13,9 +13,9 @@
     <title>Farmacia</title>
 </head>
 
-<body class="d-flex flex-column">
+<body class="d-flex flex-column" id="main">
+    {{tem}}
     <header>
-
         <nav class="navbar navbar-expand-lg bg-dark border-bottom border-bottom-dark p-0" data-bs-theme="dark"
             id="nav-main">
             <div class="container-fluid nav-estilo d-flex justify-content-between">
@@ -33,7 +33,7 @@
                         <a class="nav-link" href="./juguetes.html">JUGUETES</a>
                         <a class="nav-link" href="./contacto.html">CONTACTO</a>
                         <label class="switch">
-                            <input type="checkbox" id="bdark">
+                            <input type="checkbox" id="bdark" v-model="bDark">
                             <span class="slider"></span>
                         </label>
                     </div>
@@ -80,8 +80,7 @@
         <div
             class="d-flex flex-column align-sm-items-center flex-md-row flex-md-wrap justify-content-md-evenly flex-lg-row flex-lg-wrap justify-content-lg-evenly col-lg-9 flex-grow-1 gap-4 align-self-center">
             <template v-if="radios == 'todo' " v-for="item of itemsFiltrados" :key="item.id">
-                <div
-                    class="card col-11 col-lg-3 col-md-4 position-relative align-self-center align-self-lg-stretch boxShadow">
+                <div :class="tema">
                     <img v-bind:src="item.imagen" class="card-img-top object-fit-contain h-100"
                         b-bind:alt="item.nombre">
                     <div class="card-body d-flex flex-column justify-content-around">
@@ -106,22 +105,13 @@
                                 </div>
                             </div>
                         </div>
-                        <div :id="item._id" class="accordion-collapse collapse" data-bs-parent="#accordionFlushExample">
-                            <div class="accordion-body">
-                                <h6 class="card-text ">{{item.descripcion}}</h6>
-                            </div>
-                            <div class="quantity-control">
-                                <button class="btn" id="btnMas" @click="addToCart(item)">+</button>
-                                <span> {{ item.disponibles }} </span>
-                                <button class="btn" id="btnMenos" @click="removeFromCart(item)">-</button>
-                            </div>
-                        </div>
                     </div>
                     <div class="d-flex flex-column justify-content-end">
                         <p class="text-center">Precio: ${{item.precio}} Pesos</p>
                         <template v-if="item.disponibles < 3 && item.disponibles > 0">
                             <p class="position-absolute top-0 start-0 text-danger p-2">¡¡Ultimas Unidades!!</p>
                         </template>
+
                         <template v-if="item.disponibles == 0">
                             <h4
                                 class="position-absolute top-0 start-0 text-dark p-2 position-absolute top-50 start-50 translate-middle bg-info-subtle w-100 text-center">
@@ -133,6 +123,7 @@
                                     Añadir</button>
                             </div>
                         </template>
+
                         <template v-else>
                             <div class="quantity-control p-2 d-flex justify-content-between h-50 align-items-center">
                                 <span class="p-4 text-center"> {{ item.disponibles }} </span>
@@ -140,6 +131,7 @@
                                     Añadir</button>
                             </div>
                         </template>
+
                     </div>
                 </div>
             </template>
@@ -236,7 +228,7 @@
                 </div>
             </template>
             <template v-if="itemsFiltrados.length == 0 ">
-                <h1>No hay coincidencias</h1>
+                <h1 class="align-self-center">No hay coincidencias</h1>
             </template>
         </div>
 
@@ -245,10 +237,10 @@
                 data-bs-target="#offcanvasRight" aria-controls="offcanvasRight"><i
                     class="fas fa-shopping-cart"></i></button>
 
-            <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasRight"
+            <div class="offcanvas offcanvas-end bg-dark text-light" tabindex="-1" id="offcanvasRight"
                 aria-labelledby="offcanvasRightLabel">
                 <div class="offcanvas-header">
-                    <h5 class="offcanvas-title" id="offcanvasRightLabel">Tu Carrito de Compras</h5>
+                    <h5 class="offcanvas-title " id="offcanvasRightLabel">Tu Carrito de Compras</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
                 </div>
                 <div class="offcanvas-body">
@@ -269,10 +261,6 @@
                 </div>
             </div>
         </div>
-
-
-
-
     </main>
 
     <footer class="pb-2">
