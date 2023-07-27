@@ -2,150 +2,137 @@
 <html lang="es">
 
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"
-    integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
-  <link rel="shortcut icon" href="./assets/images/icon.png" type="image/x-icon">
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
-  <link rel="stylesheet" href="./assets/style/style.css">
-  <title>PET SHOP | HOME</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet"
+		integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+	<link rel="stylesheet" href="./assets/style/style.css">
+	<title>Animalaria | Home</title>
 </head>
 
-<body class="dark">
-  <div id="app">
-    <header>
-      <nav class="navbar navbar-expand-lg bg-dark border-bottom border-bottom-dark p-0" data-bs-theme="dark"
-        id="nav-main">
-        <div class="container-fluid nav-estilo d-flex justify-content-between">
-          <a class="navbar-brand" href="#"><img src="./assets/images/logo_animalaria.png" alt="logo"
-              class="img-logo"></a>
-          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup"
-            aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-          </button>
-          <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-            <div class="navbar-nav d-flex justify-content-end w-100">
-              <a class="nav-link active fw-bolder" aria-current="page" href="#">INICIO</a>
-              <a class="nav-link" href="./assets/pages/farmacia.html">FARMACIA</a>
-              <a class="nav-link" href="./assets/pages/juguetes.html">JUGUETES</a>
-              <a class="nav-link" href="./assets/pages/contacto.html">CONTACTO</a>
-              <label class="switch" >
-                <input type="checkbox" id="bdark">
-                <span class="slider"></span>
-            </label>
-            </div>
-          </div>
-        </div>
-      </nav>
+<body>
+  
+	<header>
+		<!--📌Nav principal-->
+		<nav class="navbar navbar-expand-lg fixed-top position-absolute top-0 start-0text-light">
+			<div class="container-fluid">
+				<a class="navbar-brand" href="#"><img src="./assets/images/logo_animalaria.png" class="img-logo" alt=""></a>
+				<button class="navbar-toggler bg-danger-subtle" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+					aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+					<span class="navbar-toggler-icon"></span>
+				</button>
+				<div class="collapse navbar-collapse" id="navbarNav">
+					<ul class="navbar-nav">
+						<li class="nav-item">
+							<a class="nav-link active text-light fw-bolder" aria-current="page" href="#">INICIO</a>
+						</li>
+						<li class="nav-item">
+							<a class="nav-link text-light" href="./assets/pages/farmacia.html">FARMACIA</a>
+						</li>
+						<li class="nav-item">
+							<a class="nav-link text-light" href="./assets/pages/juguetes.html">JUGUETES</a>
+						</li>
+						<li class="nav-item">
+							<a class="nav-link text-light" href="./assets/pages/contacto.html">CONTACTO</a>
+						</li>
+					</ul>
+				</div>
+			</div>
+		</nav>
 
-      <div id="carouselExampleCaptions" class="carousel slide">
-        <div class="carousel-indicators">
-          <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active"
-            aria-current="true" aria-label="Slide 1"></button>
-          <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1"
-            aria-label="Slide 2"></button>
-          <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2"
-            aria-label="Slide 3"></button>
-        </div>
-        <div class="carousel-inner">
-          <div class="carousel-item active c-item">
-            <img src="./assets/images/perro1.jpg" class="d-block w-100 c-img" alt="...">
-            <div class="carousel-caption d-md-block top-0 mt-4">
-              <h5 class="fw-bolder display-4 mt-5">BIENVENIDA FAMILIA</h5>
-              <p class="">
-                "Tu compañero perfecto, nuestra pasión compartida."
-              <p>
-                <button type="button" class="btn btn-success"><a class="button-a"
-                    href="./assets/pages/contacto.html">Contacto</a></button>
-            </div>
-          </div>
-          <div class="carousel-item c-item">
-            <img src="./assets/images/perritosJugando.jpg" class="d-block w-100 c-img" alt="cat">
-            <div class="carousel-caption d-md-block top-0 mt-4">
-              <h5 class="fw-bolder display-4 mt-5">¡A JUGAR!</h5>
-              <p class="">
-                "No hay mayor expresión de alegria que ver felicidad en sus caritas"
-              <p>
-                <button type="button" class="btn btn-success"><a class="button-a"
-                    href="./assets/pages/juguetes.html">Juguetes</a></button>
-            </div>
-          </div>
-          <div class="carousel-item c-item">
-            <img src="./assets/images/banner2.1.jpg" class="d-block w-100 c-img" alt="...">
-            <div class="carousel-caption d-md-block top-0 mt-4">
-              <h5 class="fw-bolder display-4 mt-5">¡OJITO AL PELUDITO!</h5>
-              <p class="">
-                "La salud del amiguito, es amor demostrado al animalito"
-              <p>
-                <button type="button" class="btn btn-success"><a class="button-a"
-                    href="./assets/pages/farmacia.html">Farmacia</a></button>
-            </div>
-          </div>
-        </div>
-        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions"
-          data-bs-slide="prev">
-          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-          <span class="visually-hidden">Previous</span>
-        </button>
-        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions"
-          data-bs-slide="next">
-          <span class="carousel-control-next-icon" aria-hidden="true"></span>
-          <span class="visually-hidden">Next</span>
-        </button>
-      </div>
-    </header>
+		<!--📌Carousel-->
+		<div id="carouselExampleCaptions" class="carousel slide">
+			<div class="carousel-indicators">
+				<button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active"
+					aria-current="true" aria-label="Slide 1"></button>
+				<button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1"
+					aria-label="Slide 2"></button>
+				<button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2"
+					aria-label="Slide 3"></button>
+			</div>
+			<div class="carousel-inner">
+				<div class="carousel-item active c-item">
+					<img src="./assets/images/1323826.png" class="d-block w-100 c-img" alt="banner_1">
+					<div class="carousel-caption d-md-block mb-5 bg-warning-subtle border border-danger rounded-4 ">
+						<h1 class="fw-bolder  text-danger-emphasis">BIENVENIDA FAMILIA</h1>
+						<h4 class="text-danger-emphasis">"Tu compañero perfecto, nuestra pasión compartida."</h4>
+					</div>
+				</div>
+				<div class="carousel-item c-item">
+					<img src="./assets/images/340480.jpg" class="d-block w-100 c-img" alt="banner_2">
+					<div class="carousel-caption d-md-block">
+						<h4 class="text-danger-emphasis">"No hay mayor expresión de alegria que ver felicidad en sus caritas"</h4>
+					</div>
+				</div>
+				<div class="carousel-item c-item">
+					<img src="./assets/images/banner2.1.jpg" class="d-block w-100 c-img" alt="banner_3">
+					<div class="carousel-caption d-md-block">
+						<h4>"La salud del amiguito, es amor demostrado al animalito"</h4>
+					</div>
+				</div>
+			</div>
+			<button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions"
+				data-bs-slide="prev">
+				<span class="carousel-control-prev-icon" aria-hidden="true"></span>
+				<span class="visually-hidden">Previous</span>
+			</button>
+			<button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions"
+				data-bs-slide="next">
+				<span class="carousel-control-next-icon" aria-hidden="true"></span>
+				<span class="visually-hidden">Next</span>
+			</button>
+		</div>
+	</header>
 
-    <main>
-      <div class="container-fluid my-5">
-        <div class="card">
-          <div class="card-body card-style-one rounded-3">
-            <h5 class="card-title"> HOLA AMIGOS 😄</h5>
-            <p class="card-text">Estamos muy contentos de que estés hoy acá, bienvenido/a a la familia. Las
-              huellitas de la casa son tu mascotas quienes siempre te acompañan, por tal motivo queremos
-              tratarles bien y darles mucho cariño. Los peluditos de la casa son tan importantes para
-              nosotros, como lo son para ti.🐈</p>
-            <p class="card-text"> Pet Station es un lugar el cual quiere darles todos los lujos a aquellos
-              que cuidan de ti y de tu hogar, tus mascotas merecen todo lo bello de este mundo y por tal
-              razón tenemos los productos de más alta calidad para que puedas cuidar de tu angelito.🐕</p>
-          </div>
-        </div>
-      </div>
+	<main class="mb-0 pb-5">
+		<div class="container-fluid py-5 mb-0">
+			<div class="card" >
+				<div class="card-body card-style-one rounded-3">
+					<h5 class="card-title"> HOLA AMIGOS 😄</h5>
+					<p class="card-text">Estamos muy contentos de que estés hoy acá, bienvenido/a a la familia. Las
+						huellitas de la casa son tu mascotas quienes siempre te acompañan, por tal motivo queremos
+						tratarles bien y darles mucho cariño. Los peluditos de la casa son tan importantes para
+						nosotros, como lo son para ti.🐈</p>
+					<p class="card-text"> Pet Station es un lugar el cual quiere darles todos los lujos a aquellos
+						que cuidan de ti y de tu hogar, tus mascotas merecen todo lo bello de este mundo y por tal
+						razón tenemos los productos de más alta calidad para que puedas cuidar de tu angelito.🐕</p>
+				</div>
+			</div>
+		</div>
 
-      <div class="container-fluid justify-content-center d-flex my-5 gap-5 flex-wrap ">
-        <div class="card" style="width: 18rem;">
-          <img src="./assets/images/banner2.jpg" class="card-img-top" alt="...">
-          <div class="card-body card-style">
-            <h5 class="card-title">Historia</h5>
-            <p class="card-text">Este lugar especial fue creado hace ya 2 años con el amor de una familia hacia los
-              animalitos que tanto nos han acompañado, estamos seguros que aunque manejamos un lenguaje distinto, el del
-              amor es igual y por ende cuidamos de ellos 🏡.</p>
-          </div>
-        </div>
-        <div class="card" style="width: 18rem;">
-          <img src="./assets/images/gatitioBello.jpg " class="card-img-top" alt="...">
-          <div class="card-body card-style">
-            <h5 class="card-title">Misión</h5>
-            <p class="card-text">Nuestra misión es proveer la mayor felicidad y el mayor bienestar a tus mascotas con el
-              fin de que tanto tu como ellas sean felices 😄. No hay nada mejor como recibir en nuestro hogar a dos
-              caritas contentas, la tuya y la de tu mascota.</p>
-          </div>
-        </div>
-        <div class="card" style="width: 18rem;">
-          <img src="./assets/images/feliz.jpg" class="card-img-top h-50" alt="...">
-          <div class="card-body card-style">
-            <h5 class="card-title">Nuestro Equipo</h5>
-            <p class="card-text">Somos un equipo de 4 personas amantes al cuidado animal, nos encanta brindar amor a tus
-              mascotas, cuidamos de ellas ya que son parte de nuestra familia, al igual que tu. Cuidamos de un ambiente
-              sano y de materiales e ingredientes certificados para darte la certeza de obtener algo de calidad ✅.</p>
-          </div>
-        </div>
-      </div>
-    </main>
+		<div class="container-fluid mb-0 justify-content-center d-flex my-5 gap-5 flex-wrap">
+			<div class="card" style="width: 18rem;">
+				<img src="./assets/images/feliz.jpg" class="card-img-top" alt="...">
+				<div class="card-body card-style">
+					<h5 class="card-title">Historia</h5>
+					<p class="card-text">Este lugar especial fue creado hace ya 2 años con el amor de una familia hacia los
+						animalitos que tanto nos han acompañado, estamos seguros que aunque manejamos un lenguaje distinto, el del
+						amor es igual y por ende cuidamos de ellos 🏡.</p>
+				</div>
+			</div>
+			<div class="card" style="width: 18rem;">
+				<img src="./assets/images/gatitioBello.jpg " class="card-img-top" alt="...">
+				<div class="card-body card-style">
+					<h5 class="card-title">Misión</h5>
+					<p class="card-text">Nuestra misión es proveer la mayor felicidad y el mayor bienestar a tus mascotas con el
+						fin de que tanto tu como ellas sean felices 😄. No hay nada mejor como recibir en nuestro hogar a dos
+						caritas contentas, la tuya y la de tu mascota.</p>
+				</div>
+			</div>
+			<div class="card" style="width: 18rem;">
+				<img src="./assets/images/banner2.jpg" class="card-img-top h-50" alt="...">
+				<div class="card-body card-style">
+					<h5 class="card-title">Nuestro Equipo</h5>
+					<p class="card-text">Somos un equipo de 4 personas amantes al cuidado animal, nos encanta brindar amor a tus
+						mascotas, cuidamos de ellas ya que son parte de nuestra familia, al igual que tu. Cuidamos de un ambiente
+						sano y de materiales e ingredientes certificados para darte la certeza de obtener algo de calidad ✅.</p>
+				</div>
+			</div>
+		</div>
+	</main>
 
-    <footer>
-      <hr>
-      <section
+	<footer>
+		<section
         class="container align-items-center d-flex justify-content-around flex-wrap gap-2 align-items-center p-2">
         <nav class="gap-5">
           <a href="https://web.whatsapp.com/"><img class="img-redes" src="./assets/images/wpp.png" alt="whatsapp"
@@ -158,14 +145,11 @@
         <small class="text-light">Derechos de página reservados - Animalaria</small>
         <h5 class="text-light">Cohort - 49</h5>
       </section>
-    </footer>
+	</footer>
 
-  </div>
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"
-    integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz"
-    crossorigin="anonymous"></script>
-  <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
-  <script src="./assets/scripts/main.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"
+		integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm"
+		crossorigin="anonymous"></script>
 </body>
 
 </html>
