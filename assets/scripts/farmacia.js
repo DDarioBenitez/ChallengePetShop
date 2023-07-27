@@ -5,12 +5,8 @@ let farmacia = createApp({
   data() {
     return {
       items: [],
-      nombre: undefined,
       categoria: ["Farmacia", "Jugueteria"],
       id: undefined,
-      precio: undefined,
-      stock: undefined,
-      descripcion: undefined,
       itemsFarmacia: undefined,
       radios: "todo",
       search: "",
@@ -57,6 +53,9 @@ let farmacia = createApp({
     }
   },
   computed: {
+    tem() {
+      this.bDark == true ? this.tema = 'card col-11 col-lg-3 col-md-4 position-relative align-self-center align-self-lg-stretch boxShadow text-light bg-dark' : this.tema = 'card col-11 col-lg-3 col-md-4 position-relative align-self-center align-self-lg-stretch boxShadow card-tema'
+    },
     filtrarBusqueda() {
       if (this.radios == "todo") {
         this.itemsFiltrados =
@@ -78,7 +77,7 @@ let farmacia = createApp({
           item.producto.toLowerCase().includes(this.search.toLowerCase())
         );
       }
-
+      console.log(this.bDark);
       console.log(this.itemsFiltrados);
     },
 
@@ -141,16 +140,6 @@ let farmacia = createApp({
       this.storeCartItems();
     },
 
-    updateStock() {
-      this.cartItems.forEach((item) => {
-        const productIndex = this.products.findIndex(
-          (p) => p._id === item._id
-        );
-        if (productIndex !== -1) {
-          this.products[productIndex].disponibles -= item.quantity;
-        }
-      });
-    },
 
     storeCartItems() {
       localStorage.setItem('cartItems', JSON.stringify(this.cartItems));
@@ -162,13 +151,12 @@ let farmacia = createApp({
 
     },
     buyItems() {
-      this.updateStock();
       this.clearCart();
       this.isPurchased = true;
     },
     buyAgain() {
+
       this.isPurchased = false;
-      this.clearCart();
     },
   },
 })

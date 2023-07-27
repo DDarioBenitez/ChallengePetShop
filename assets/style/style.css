@@ -27,7 +27,7 @@ footer {
 
 body {
   background-color: #dbe58b;
-  /* transition: all 1.5s ease; */
+  transition: all 1.5s ease;
   min-height: 100vh;
 }
 
@@ -171,4 +171,7 @@ iframe {
 
 .offcanvas.show {
   transform: translateX(0);
+}
+[v-cloak] {
+  display: none;
 }
