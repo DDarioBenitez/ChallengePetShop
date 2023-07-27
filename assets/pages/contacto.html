@@ -38,7 +38,7 @@
       </nav>
     </header>
 
-    <main class="flex-grow-1 ">
+    <main class="flex-grow-1">
 
       <section>
         <h1 style="text-align: center">Contáctanos</h1>
@@ -154,11 +154,14 @@
               <p>No hay nada en el carrito</p>
             </template>
             <button class="btn btn-sm" @click="clearCart" id="btnVaciar">Vaciar Carrito</button>
+            <div v-show="isPurchased" class="alert alert-success" role="alert">
+              Felicitaciones! Tu compra fue exitosa.
 
+              <button class="btn btn-sm btn-primary mt-2" @click="buyAgain">Seguir Comprando</button>
 
+            </div>
           </div>
         </div>
-        <!-- </template> -->
       </div>
 
     </main>

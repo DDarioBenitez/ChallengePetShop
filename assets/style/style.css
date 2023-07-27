@@ -174,3 +174,6 @@ iframe {
 [v-cloak] {
   display: none;
 }
+.vaciar:hover {
+  background-color: red;
+}

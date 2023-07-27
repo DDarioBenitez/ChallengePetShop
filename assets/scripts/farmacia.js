@@ -171,4 +171,5 @@ let farmacia = createApp({
         },
     },
 })
+
 farmacia.mount("#main");
