@@ -14,7 +14,7 @@
 </head>
 
 <body class="d-flex flex-column" id="main">
-    <div :class="bdark==true ? 'dark' : ''">
+    <div :class="bdark==true ? 'dark d-flex flex-column flex-grow-1' : 'd-flex flex-column flex-grow-1'">
         <header>
             <nav class="navbar navbar-expand-lg bg-dark border-bottom border-bottom-dark p-0" data-bs-theme="dark"
                 id="nav-main">
@@ -239,7 +239,7 @@
                     </div>
                 </template>
                 <template v-if="itemsFiltrados.length == 0 ">
-                    <h1>No hay coincidencias</h1>
+                    <h1 class="align-self-center">No hay coincidencias</h1>
                 </template>
             </div>
 
