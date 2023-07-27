@@ -151,14 +151,28 @@ let farmacia = createApp({
       console.log('isCartOpen:', this.isCartOpen);
 
     },
+
+    updateStock() {
+      this.cartItems.forEach((item) => {
+        const productIndex = this.products.findIndex(
+          (p) => p._id === item._id
+        );
+        if (productIndex !== -1) {
+          this.products[productIndex].disponibles -= item.quantity;
+        }
+      });
+    },
+
     buyItems() {
+      this.updateStock();
       this.clearCart();
       this.isPurchased = true;
     },
+
     buyAgain() {
-      
+      this.isPurchased = false;      
       this.isPurchased = false;
-  },
+    },
 
 
   },
