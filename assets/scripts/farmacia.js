@@ -17,6 +17,7 @@ let farmacia = createApp({
       mayorMenor: [],
       menorMayor: [],
       itemsFiltrados: [],
+      aux: undefined,
 
       products: [],
       cartItems: [],
@@ -42,6 +43,7 @@ let farmacia = createApp({
           (a, b) => b.precio - a.precio
         );
         console.log(this.menorMayor);
+
 
         this.products = datos;
         this.cartItems = [];
@@ -81,6 +83,7 @@ let farmacia = createApp({
     },
 
     totalPrice() {
+      console.log(this.aux);
       return this.cartItems.reduce(
         (total, item) => total + item.precio * item.quantity,
         0
@@ -128,18 +131,26 @@ let farmacia = createApp({
 
 
     clearCart() {
-
       this.cartItems.forEach(item => {
         const productIndex = this.products.findIndex(p => p._id === item._id);
         if (productIndex !== -1) {
           this.products[productIndex].disponibles += item.quantity;
         }
       });
-
       this.cartItems = [];
       this.storeCartItems();
     },
 
+    updateStock() {
+      this.cartItems.forEach((item) => {
+        const productIndex = this.products.findIndex(
+          (p) => p._id === item._id
+        );
+        if (productIndex !== -1) {
+          this.products[productIndex].disponibles -= item.quantity;
+        }
+      });
+    },
 
     storeCartItems() {
       localStorage.setItem('cartItems', JSON.stringify(this.cartItems));
@@ -151,18 +162,15 @@ let farmacia = createApp({
 
     },
     buyItems() {
+      this.updateStock();
       this.clearCart();
       this.isPurchased = true;
     },
     buyAgain() {
-
       this.isPurchased = false;
+      this.clearCart();
     },
-
   },
-
-
-
 })
 
 farmacia.mount("#main");

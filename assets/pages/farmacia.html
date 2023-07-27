@@ -14,7 +14,6 @@
 </head>
 
 <body class="d-flex flex-column" id="main">
-    {{tem}}
     <header>
         <nav class="navbar navbar-expand-lg bg-dark border-bottom border-bottom-dark p-0" data-bs-theme="dark"
             id="nav-main">
@@ -32,18 +31,14 @@
                         <a class="nav-link active fw-bolder" href="#">FARMACIA</a>
                         <a class="nav-link" href="./juguetes.html">JUGUETES</a>
                         <a class="nav-link" href="./contacto.html">CONTACTO</a>
-                        <label class="switch">
-                            <input type="checkbox" id="bdark" v-model="bDark">
-                            <span class="slider"></span>
-                        </label>
                     </div>
                 </div>
             </div>
         </nav>
     </header>
 
-    <main class="d-flex flex-column flex-grow-1 pt-2 " id="main">
-        {{filtrarBusqueda}}
+    <main class="d-flex flex-column flex-grow-1 pt-2 container-fluid p-3 gap-2" id="main">
+        <span v-cloak>{{filtrarBusqueda}}</span>
         <div class="d-flex flex-column col-lg-12flex-lg-wrap">
             <form class="d-flex col-10 col-lg-5 align-self-center" role="search">
                 <input class="form-control me-2" type="search" aria-label="Search" v-model="search"
@@ -81,11 +76,10 @@
             class="d-flex flex-column align-sm-items-center flex-md-row flex-md-wrap justify-content-md-evenly flex-lg-row flex-lg-wrap justify-content-lg-evenly col-lg-9 flex-grow-1 gap-4 align-self-center">
 
 
-            <template v-if="radios == 'todo' " v-for="item of itemsFiltrados" :key="item.id">
+            <template v-if=" radios == 'todo' " v-for="item of itemsFiltrados" :key="item.id">
                 <div
-                    class="card col-11 col-lg-3 col-md-4 position-relative align-self-center align-self-lg-stretch boxShadow">
-                    <img v-bind:src="item.imagen" class="card-img-top object-fit-contain h-100"
-                        b-bind:alt="item.nombre">
+                    class="card col-11 col-lg-3 col-md-4 position-relative align-self-center align-self-lg-stretch boxShadow bg-transparent text-dark fw-bolder">
+                    <img v-bind:src="item.imagen" class="card-img-top object-fit-fill h-100" b-bind:alt="item.nombre">
                     <div class="card-body d-flex flex-column justify-content-around">
                         <h5 class="card-title text-center">{{item.producto}}</h5>
                         <!-- Button trigger modal -->
@@ -98,7 +92,7 @@
                             aria-hidden="true">
                             <div class="modal-dialog">
                                 <div class="modal-content bg-success-subtle">
-                                    <div class="modal-body text-dark">
+                                    <div class="modal-body fs-5">
                                         {{item.descripcion}}
                                     </div>
                                     <div class="modal-footer">
@@ -110,9 +104,10 @@
                         </div>
                     </div>
                     <div class="d-flex flex-column justify-content-end">
-                        <p class="text-center fs-2">Precio: ${{item.precio}} Pesos</p>
+                        <p class="text-center fs-4">Precio: ${{item.precio}} Pesos</p>
                         <template v-if="item.disponibles < 3 && item.disponibles > 0">
-                            <p class="position-absolute top-0 start-0 text-danger p-2">¡¡Ultimas Unidades!!</p>
+                            <p class="position-absolute top-0 start-0 text-danger p-2 fw-bolder">¡¡Ultimas Unidades!!
+                            </p>
                         </template>
 
                         <template v-if="item.disponibles == 0">
@@ -120,7 +115,7 @@
                                 class="position-absolute top-0 start-0 text-dark p-2 position-absolute top-50 start-50 translate-middle bg-info-subtle w-100 text-center">
                                 Agotado :c</h4>
                             <div class="quantity-control p-2 d-flex justify-content-between h-50 align-items-center">
-                                <span class="p-4 text-center fs-4"> {{ item.disponibles }} </span>
+                                <p class="p-4 text-center fs-5"> {{ item.disponibles }} </p>
                                 <button type="button" class="btn btn-outline-danger disabled"> <i
                                         class="bi bi-cart4"></i>
                                     Añadir</button>
@@ -129,22 +124,20 @@
 
                         <template v-else>
                             <div class="quantity-control p-2 d-flex justify-content-between h-50 align-items-center">
-                                <span class="p-4 text-center"> {{ item.disponibles }} </span>
+                                <p class="p-4 text-center fs-5 fw-bolder"> {{ item.disponibles }} </p>
                                 <button type="button" class="btn btn-outline-danger" @click="addToCart(item)"> <i
                                         class="bi bi-cart4"></i>
                                     Añadir</button>
                             </div>
                         </template>
-
                     </div>
                 </div>
             </template>
-            <template v-if="radios == 'mayor'" v-for="item of itemsFiltrados">
+            <template v-if=" radios == 'mayor' " v-for="item of itemsFiltrados">
                 <div
-                    class="card col-11 col-lg-3 col-md-4 position-relative align-self-center align-self-lg-stretch boxShadow">
-                    <img v-bind:src="item.imagen" class="card-img-top object-fit-contain h-100"
-                        b-bind:alt="item.nombre">
-                    <div class="card-body d-flex flex-column justify-content-end">
+                    class="card col-11 col-lg-3 col-md-4 position-relative align-self-center align-self-lg-stretch boxShadow bg-transparent text-dark fw-bolder">
+                    <img v-bind:src="item.imagen" class="card-img-top object-fit-fill h-100" b-bind:alt="item.nombre">
+                    <div class="card-body d-flex flex-column justify-content-around">
                         <h5 class="card-title text-center">{{item.producto}}</h5>
                         <!-- Button trigger modal -->
                         <button type="button" class="btn btn-primary bg-success col-8 align-self-center"
@@ -155,8 +148,8 @@
                         <div class="modal fade" :id="item._id" tabindex="-1" aria-labelledby="exampleModalLabel"
                             aria-hidden="true">
                             <div class="modal-dialog">
-                                <div class="modal-content">
-                                    <div class="modal-body">
+                                <div class="modal-content bg-success-subtle">
+                                    <div class="modal-body fs-5">
                                         {{item.descripcion}}
                                     </div>
                                     <div class="modal-footer">
@@ -168,29 +161,46 @@
                         </div>
                     </div>
                     <div class="d-flex flex-column justify-content-end">
-                        <p class="text-center">Precio: ${{item.precio}} Pesos</p>
+                        <p class="text-center fs-4">Precio: ${{item.precio}} Pesos</p>
                         <template v-if="item.disponibles < 3 && item.disponibles > 0">
-                            <p class="position-absolute top-0 start-0 text-danger p-2">¡¡Ultimas Unidades!!</p>
+                            <p class="position-absolute top-0 start-0 text-danger p-2 fw-bolder">¡¡Ultimas Unidades!!
+                            </p>
                         </template>
+
                         <template v-if="item.disponibles == 0">
-                            <h2
-                                class="position-absolute top-0 start-0 text-danger p-2 position-absolute top-50 start-50 translate-middle bg-secondary w-100 text-center">
-                                Agotado :c</h2>
+                            <h4
+                                class="position-absolute top-0 start-0 text-dark p-2 position-absolute top-50 start-50 translate-middle bg-info-subtle w-100 text-center">
+                                Agotado :c</h4>
+                            <div class="quantity-control p-2 d-flex justify-content-between h-50 align-items-center">
+                                <p class="p-4 text-center fs-5"> {{ item.disponibles }} </p>
+                                <button type="button" class="btn btn-outline-danger disabled"> <i
+                                        class="bi bi-cart4"></i>
+                                    Añadir</button>
+                            </div>
+                        </template>
+
+                        <template v-else>
+                            <div class="quantity-control p-2 d-flex justify-content-between h-50 align-items-center">
+                                <p class="p-4 text-center fs-5 fw-bolder"> {{ item.disponibles }} </p>
+                                <button type="button" class="btn btn-outline-danger" @click="addToCart(item)"> <i
+                                        class="bi bi-cart4"></i>
+                                    Añadir</button>
+                            </div>
                         </template>
                         <div class="quantity-control p-2 d-flex justify-content-between h-50 align-items-center">
                             <span class="p-4 text-center"> {{ item.disponibles }} </span>
-                            <button type="button" class="btn btn-outline-danger"> <i class="bi bi-cart4"></i>
+                            <button type="button" class="btn btn-outline-danger" @click="addToCart(item)"> <i
+                                    class="bi bi-cart4"></i>
                                 Añadir</button>
                         </div>
                     </div>
                 </div>
             </template>
-            <template v-if="radios == 'menor'" v-for="item of itemsFiltrados">
+            <template v-if=" radios == 'menor' " v-for="item of itemsFiltrados">
                 <div
-                    class="card col-11 col-lg-3 col-md-4 position-relative align-self-center align-self-lg-stretch boxShadow">
-                    <img v-bind:src="item.imagen" class="card-img-top object-fit-contain h-100"
-                        b-bind:alt="item.nombre">
-                    <div class="card-body d-flex flex-column justify-content-end">
+                    class="card col-11 col-lg-3 col-md-4 position-relative align-self-center align-self-lg-stretch boxShadow bg-transparent text-dark fw-bolder">
+                    <img v-bind:src="item.imagen" class="card-img-top object-fit-fill h-100" b-bind:alt="item.nombre">
+                    <div class="card-body d-flex flex-column justify-content-around">
                         <h5 class="card-title text-center">{{item.producto}}</h5>
                         <!-- Button trigger modal -->
                         <button type="button" class="btn btn-primary bg-success col-8 align-self-center"
@@ -201,8 +211,8 @@
                         <div class="modal fade" :id="item._id" tabindex="-1" aria-labelledby="exampleModalLabel"
                             aria-hidden="true">
                             <div class="modal-dialog">
-                                <div class="modal-content">
-                                    <div class="modal-body">
+                                <div class="modal-content bg-success-subtle">
+                                    <div class="modal-body fs-5">
                                         {{item.descripcion}}
                                     </div>
                                     <div class="modal-footer">
@@ -245,7 +255,7 @@
                                                     class="quantity-control p-2 d-flex justify-content-between h-50 align-items-center">
                                                     <span class="p-4 text-center"> {{ item.disponibles }} </span>
                                                     <button type="button" class="btn btn-outline-danger"> <i
-                                                            class="bi bi-cart4"></i>
+                                                            class="bi bi-cart4" @click="addToCart(item)"></i>
                                                         Añadir</button>
                                                 </div>
                                             </div>
@@ -259,7 +269,7 @@
         <div class="shoppingCart">
             <button class="btn btn-danger" type="button" @click="toggleCart" data-bs-toggle="offcanvas"
                 data-bs-target="#offcanvasRight" aria-controls="offcanvasRight" id="buttonCart">
-                <i class="fas fa-shopping-cart"></i></button>
+                <i class="fas fa-shopping-cart fs-4"></i></button>
 
             <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasRight" aria-labelledby="offcanvasRightLabel"
                 git>
@@ -278,9 +288,9 @@
                             </li>
                         </ul>
                     </template>
-
                     <template v-else>
                         <p>No hay nada en el carrito</p>
+                    </template>
                     </template>
                     <button class="btn btn-sm" @click="clearCart" id="btnVaciar">Vaciar Carrito</button>
                     <div v-show="isPurchased" class="alert alert-success" role="alert">
@@ -291,15 +301,19 @@
                     </div>
                     <div>
                         <p>Total: ${{ totalPrice.toFixed(2) }}</p>
-                        <button class="btn btn-sm btn-success" @click="buyItems" v-show="!isPurchased"><i
-                                class="fas fa-shopping-cart me-1"></i>Comprar</button>
-
+                        <template v-if="totalPrice==0">
+                            <button class="btn btn-sm btn-success disabled" @click="buyItems" v-show="!isPurchased"><i
+                                    class="fas fa-shopping-cart me-1"></i>Comprar</button>
+                        </template>
+                        <template v-if="totalPrice>0">
+                            <button class="btn btn-sm btn-success" @click="buyItems" v-show="!isPurchased"><i
+                                    class="fas fa-shopping-cart me-1"></i>Comprar</button>
+                        </template>
                     </div>
-
-
-
                 </div>
             </div>
+        </div>
+        </div>
         </div>
     </main>
 
@@ -314,7 +328,7 @@
                 <a href="https://www.instagram.com/"><img class="img-redes" src="../images/instagram.png"
                         alt="instagram" title="Instagramp"></a>
             </nav>
-            <small>Derechos de página reservados - Pet station</small>
+            <small>Derechos de página reservados - Animalaria</small>
             <h5 class="text-light">Cohort - 49</h5>
         </section>
     </footer>
@@ -324,7 +338,6 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz"
         crossorigin="anonymous"></script>
-
     <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
     <script src="../scripts/farmacia.js"></script>
     <script src="../scripts/main.js"></script>
