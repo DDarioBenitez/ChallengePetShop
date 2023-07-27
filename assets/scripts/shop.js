@@ -25,7 +25,7 @@ const options = {
 
     },
     methods: {
-        addToCart(product) {
+        addToCart(product) { 
             const productIndex = this.products.findIndex(item => item._id === product._id);
             if (productIndex !== -1) {
                 const selectedProduct = this.products[productIndex];
