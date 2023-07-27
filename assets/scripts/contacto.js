@@ -32,18 +32,16 @@ const options = {
             .catch(error => console.log(error))
 
 
+        computed:{
+            totalPrice() {
+                return this.cartItems.reduce(
+                  (total, item) => total + item.precio * item.quantity,
+                  0
+                );
+              },
+        },
 
-    },
-    computed:{
-        totalPrice() {
-            console.log(this.aux);
-            return this.cartItems.reduce(
-              (total, item) => total + item.precio * item.quantity,
-              0
-            );
-          },
-    },
-
+       
 
     methods: {
         validateForm() {
@@ -129,19 +127,28 @@ const options = {
 
         },
 
-        buyItems() {
-
+        updateStock() {
+            this.cartItems.forEach((item) => {
+              const productIndex = this.products.findIndex(
+                (p) => p._id === item._id
+              );
+              if (productIndex !== -1) {
+                this.products[productIndex].disponibles -= item.quantity;
+              }
+            });
+          },
+      
+          buyItems() {
             this.updateStock();
             this.clearCart();
             this.isPurchased = true;
-        },
-        buyAgain() {
+          },
+      
+          buyAgain() {
+            this.isPurchased = false;      
             this.isPurchased = false;
-            this.clearCart();
-        },
-
-    },
-
+          },
+=======
 
 };
 
