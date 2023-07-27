@@ -53,6 +53,8 @@ let farmacia = createApp({
     if (cartItems) {
       this.cartItems = cartItems;
     }
+
+    this.cartItems = JSON.parse(localStorage.getItem("agregados"));
   },
   computed: {
     filtrarBusqueda() {
@@ -105,6 +107,7 @@ let farmacia = createApp({
         } else {
           alert("Lo sentimos, El Producto ya está agotado.");
         }
+        localStorage.setItem('agregados', JSON.stringify(this.products) )
       }
       this.storeCartItems();
     },
@@ -139,8 +142,6 @@ let farmacia = createApp({
       this.cartItems = [];
       this.storeCartItems();
     },
-
-
     storeCartItems() {
       localStorage.setItem('cartItems', JSON.stringify(this.cartItems));
     },
@@ -158,6 +159,7 @@ let farmacia = createApp({
       
       this.isPurchased = false;
   },
+
 
   },
 
