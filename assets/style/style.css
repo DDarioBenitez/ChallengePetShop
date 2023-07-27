@@ -58,11 +58,10 @@ body {
   color: white;
 }
 
-body.darkmode{
+/* body.darkmode{
   background-color: #181212;
   color: white !important;
-  transition: all 1.5s ease;
-}
+} */
 
 
 
