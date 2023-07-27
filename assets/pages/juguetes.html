@@ -42,8 +42,7 @@
         <div class="d-flex flex-column col-lg-12flex-lg-wrap">
             <form class="d-flex col-10 col-lg-5 align-self-center" role="search">
                 <input class="form-control me-2" type="search" aria-label="Search" v-model="search"
-                    placeholder="Search">
-                <button class="btn btn-danger" type="submit">Search</button>
+                    placeholder="Buscar">
             </form>
 
             <div class="d-flex flex-lg-row align-self-center">
@@ -170,7 +169,7 @@
                         <template v-if="item.disponibles == 0">
                             <h4
                                 class="position-absolute top-0 start-0 text-dark p-2 position-absolute top-50 start-50 translate-middle bg-info-subtle w-100 text-center">
-                                Agotado :c</h4>
+                                Agotado </h4>
                             <div class="quantity-control p-2 d-flex justify-content-between h-50 align-items-center">
                                 <p class="p-4 text-center fs-5"> {{ item.disponibles }} </p>
                                 <button type="button" class="btn btn-outline-danger disabled"> <i
