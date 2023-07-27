@@ -13,10 +13,13 @@ let farmacia = createApp({
       mayorMenor: [],
       menorMayor: [],
       itemsFiltrados: [],
+      aux: undefined,
+
       products: [],
       cartItems: [],
       isCartOpen: false,
-    };
+      isPurchased: false,
+    }
   },
   created() {
     fetch("https://mindhub-xj03.onrender.com/api/petshop")
@@ -37,8 +40,10 @@ let farmacia = createApp({
         );
         console.log(this.menorMayor);
 
+
         this.products = datos;
         this.cartItems = [];
+
       })
       .catch((error) => console.error("F"));
 
@@ -46,9 +51,11 @@ let farmacia = createApp({
     if (cartItems) {
       this.cartItems = cartItems;
     }
-    console.log(this.cartItems);
   },
   computed: {
+    tem() {
+      this.bDark == true ? this.tema = 'card col-11 col-lg-3 col-md-4 position-relative align-self-center align-self-lg-stretch boxShadow text-light bg-dark' : this.tema = 'card col-11 col-lg-3 col-md-4 position-relative align-self-center align-self-lg-stretch boxShadow card-tema'
+    },
     filtrarBusqueda() {
       if (this.radios == "todo") {
         this.itemsFiltrados =
@@ -75,6 +82,7 @@ let farmacia = createApp({
     },
 
     totalPrice() {
+      console.log(this.aux);
       return this.cartItems.reduce(
         (total, item) => total + item.precio * item.quantity,
         0
@@ -122,7 +130,6 @@ let farmacia = createApp({
 
 
     clearCart() {
-
       this.cartItems.forEach(item => {
         const productIndex = this.products.findIndex(p => p._id === item._id);
         if (productIndex !== -1) {
@@ -148,13 +155,10 @@ let farmacia = createApp({
       this.isPurchased = true;
     },
     buyAgain() {
+
       this.isPurchased = false;
     },
-
   },
-
-
-
 })
 
 farmacia.mount("#main");
