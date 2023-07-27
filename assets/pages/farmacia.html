@@ -178,7 +178,7 @@
                         </template>
                         <div class="quantity-control p-2 d-flex justify-content-between h-50 align-items-center">
                             <span class="p-4 text-center"> {{ item.disponibles }} </span>
-                            <button type="button" class="btn btn-outline-danger"> <i class="bi bi-cart4"></i>
+                            <button type="button" class="btn btn-outline-danger" @click="addToCart(item)"> <i class="bi bi-cart4"></i>
                                 Añadir</button>
                         </div>
                     </div>
@@ -244,7 +244,7 @@
                                                     class="quantity-control p-2 d-flex justify-content-between h-50 align-items-center">
                                                     <span class="p-4 text-center"> {{ item.disponibles }} </span>
                                                     <button type="button" class="btn btn-outline-danger"> <i
-                                                            class="bi bi-cart4"></i>
+                                                            class="bi bi-cart4" @click="addToCart(item)"></i>
                                                         Añadir</button>
                                                 </div>
                                             </div>
@@ -309,7 +309,7 @@
                 <a href="https://www.instagram.com/"><img class="img-redes" src="../images/instagram.png"
                         alt="instagram" title="Instagramp"></a>
             </nav>
-            <small>Derechos de página reservados - Pet station</small>
+            <small>Derechos de página reservados - Animalaria</small>
             <h5 class="text-light">Cohort - 49</h5>
         </section>
     </footer>

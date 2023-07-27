@@ -133,6 +133,16 @@ let farmacia = createApp({
       this.storeCartItems();
     },
 
+    updateStock() {
+      this.cartItems.forEach((item) => {
+        const productIndex = this.products.findIndex(
+          (p) => p._id === item._id
+        );
+        if (productIndex !== -1) {
+          this.products[productIndex].disponibles -= item.quantity;
+        }
+      });
+    },
 
     storeCartItems() {
       localStorage.setItem('cartItems', JSON.stringify(this.cartItems));
@@ -144,12 +154,13 @@ let farmacia = createApp({
 
     },
     buyItems() {
+      this.updateStock();
       this.clearCart();
       this.isPurchased = true;
     },
     buyAgain() {
-
       this.isPurchased = false;
+      this.clearCart();
     },
 
   },
